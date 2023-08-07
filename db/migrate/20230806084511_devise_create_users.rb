@@ -3,6 +3,17 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
+
+
+
+  
+      # User_name
+      t.string :name,  null: false , unique: true 
+
+      # admin
+      t.boolean :admin, default: false
+
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -22,9 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :last_sign_in_ip
 
       ## Confirmable
-      # t.string   :confirmation_token
+      t.string   :confirmation_token
       # t.datetime :confirmed_at
-      # t.datetime :confirmation_sent_at
+      t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
@@ -38,6 +49,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :name,                 unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
