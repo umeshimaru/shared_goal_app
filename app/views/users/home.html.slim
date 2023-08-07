@@ -1,2 +1,22 @@
-h1 Users#home
-p Find me in app/views/users/home.html.slim
+div 
+  h1 目標共有アプリ
+  p 
+    | 目標を共有し合い、共に成長しよう
+
+= button_to "アカウント新規登録へ"
+<br>
+p 
+  | ログイン
+
+= form_with model: @user do |f|
+
+  =f.label :email,"メール"
+  =f.text_field :email
+
+  =link_to "パスワードお忘れの方"
+  =f.label :encrypted_password,"パスワード"
+  =f.password_field :encrypted_password
+  
+
+
+  = f.submit "ログイン"
