@@ -1,22 +1,33 @@
-div.position_center  
-  h1 目標共有アプリ
-  p 
-    | 目標を共有し合い、共に成長しよう
-
-div.big-box
-  div.inline-block 
-    = button_to "アカウント新規登録へ"
-
-  div.inline-block
+div.big-wrapper
+  div.medium-wrapper1
+    h1 目標共有アプリ
     p 
-      | ログイン
-    = form_with model: @user do |f|
+      | 目標を共有し合い、共に成長しよう
 
-      =f.label :email,"メール"
-      =f.text_field :email
+  div.medium-wrapper2
+    div.inline-block 
+      = button_to "アカウント新規登録へ"
 
-      =link_to "パスワードお忘れの方"
-      =f.label :encrypted_password,"パスワード"
-      =f.password_field :encrypted_password
+    div.inline-block
+      p 
+        | ログイン
+      = form_with model: @user do |f|
+
+        .form-group.col-md-6
+          =f.label :email,"メール"
+          =f.text_field :email, class: 'form-control', placeholder: 'Enter email'
+
+        .form-group.col-md-6
+          =f.label :encrypted_password,"パスワード"
+          p 
+            =link_to "パスワードお忘れの方"
+          =f.password_field :encrypted_password, class: 'form-control', placeholder: 'Enter password'
+
+        .form-group.col-md-6
+          =f.check_box :remember_created_at ,class: 'form-check-input'
+          span 次回以降自動ログイン
+              
   
-      = f.submit "ログイン"
+          = f.submit "ログイン",class: 'btn btn-primary'
+
+
