@@ -1,0 +1,38 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// ログインページ home.html.slim
+
+.big-wrapper {
+              
+          .medium-wrapper1 {
+                            
+                            text-align: center;
+
+                h1 {
+                    color: rgb(185, 43, 39);
+                    font-family: -apple-system, BlinkMacSystemFont, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "游ゴシック Medium", "Yu Gothic Medium", sans-serif;
+                    }
+                p {
+                    font-weight: 700;
+                    color: #636466;
+                  }
+                             }
+  .medium-wrapper2 {
+                    display: flex;
+                    text-align: center;
+                    justify-content: center; /* 横方向の中央揃え */
+                    align-items: center; /* 縦方向の中央揃え */
+                 .inline-block{
+                                display: inline-block;
+                                width: 100%; 
+                             > p {
+                                 text-align: left;
+                                 
+                                 
+                                  }
+                              }
+                             
+                    
+                    }  
+                  }
