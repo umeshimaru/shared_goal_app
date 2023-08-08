@@ -6,10 +6,10 @@ div.big-wrapper
 
   div.medium-wrapper2
     div.inline-block 
-      = button_to "アカウント新規登録へ"
+      = button_to "アカウント新規登録へ",{controller: 'users', action: 'new'}, class: 'btn btn-primary '
 
     div.inline-block
-      p 
+      p
         | ログイン
       = form_with model: @user do |f|
 
