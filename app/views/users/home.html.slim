@@ -13,18 +13,18 @@ div.big-wrapper
         | ログイン
       = form_with model: @user do |f|
 
-        .form-group.col-md-6
+        .form-group.col-md-8
           =f.label :email,"メール"
-          =f.text_field :email, class: 'form-control', placeholder: 'Enter email'
+          =f.text_field :email, class: 'form-control col-md-6', placeholder: 'Enter email'
 
-        .form-group.col-md-6
+        .form-group.col-md-8
           =f.label :encrypted_password,"パスワード"
           p 
             =link_to "パスワードお忘れの方"
-          =f.password_field :encrypted_password, class: 'form-control', placeholder: 'Enter password'
+          =f.password_field :encrypted_password, class: 'form-control ', placeholder: 'Enter password'
 
-        .form-group.col-md-6
-          =f.check_box :remember_created_at ,class: 'form-check-input'
+        .form-group.form-check.col-md-8
+          =f.check_box :remember_created_at ,class: 'form-check-label'
           span 次回以降自動ログイン
               
   
