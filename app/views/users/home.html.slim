@@ -9,7 +9,7 @@ div.big-wrapper
       = button_to "アカウント新規登録へ",{controller: 'users', action: 'new'}, class: 'btn btn-primary '
 
     div.inline-block
-      p
+      p.col-md-8
         | ログイン
       = form_with model: @user do |f|
 
