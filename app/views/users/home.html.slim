@@ -6,8 +6,36 @@ div.big-wrapper
 
   div.medium-wrapper2
     div.inline-block 
-      = button_to "アカウント新規登録へ",{controller: 'users', action: 'new'}, class: 'btn btn-primary '
+      button.btn.btn-primary(type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo") アカウント新規登録へ
+      div.modal.fade#exampleModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel")
+        div.modal-dialog(role="document")
+          div.modal-content
+            div.modal-header
+              button.close(type="button" data-dismiss="modal" aria-label="Close" )
+                span[aria-hidden="true"] &times;
+              h4.modal-title#exampleModalLabel 新規登録
+            .modal-body  
+              = form_with(model: @user,  local: true) do |form|
+                 form-group
+                    = form.label :name,"ユーザー名",class:'control-label', for: 'recipient-name'
+                    = form.text_field :name, class: 'form-control', id: 'recipient-name'
 
+                 form-group
+                    = form.label :email,"メールアドレス",class:'control-label', for: 'recipient-email'
+                    = form.email_field :email, class: 'form-control', id: 'recipient-email'
+
+                 form-group
+                    = form.label :password,"パスワード",class:'control-label', for: 'recipient-password'
+                    = form.password_field :encrypted_password, class: 'form-control', id: 'recipient-passeord'
+
+                 form-group
+                    = form.submit
+
+      
+
+    
+    
+    
     div.inline-block
       p.col-md-8
         | ログイン
@@ -30,24 +58,7 @@ div.big-wrapper
   
           = f.submit "ログイン",class: 'btn btn-primary'
 
-    <p id="test">jQueryでーーーーーす</p>
-    <p class="hoge">色を変えまーーーーーーーす</p>
+    
 
 
 
-
-= form_with(model: @user,  local: true) do |form|
-  div 
-      = form.label :name,"ユーザー名"
-      = form.text_field :name
-
-  div
-      = form.label :email,"メールアドレス"
-      = form.email_field :email
-
-  div
-      = form.label :password,"パスワード"
-      = form.password_field :encrypted_password
-
-  div
-      = form.submit
