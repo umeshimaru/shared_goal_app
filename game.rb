@@ -13,35 +13,34 @@ class Strack_out
 
     @strack_panel_num_array = []
     @strack_panel_num.times do 
-      @number = rand(1..100)
+      @number = rand(1..5)
       @maru_batsu_string = ["○","✖️"].sample
      @hash = {@maru_batsu_string => @number}
-     @strack_panel_num_array.push(hash)
+     @strack_panel_num_array.push(@hash)
     end
     @answer = 0
   end
 
   def answer
-    @maru_numbers = []
     @strack_panel_num_array.each do |hash|
       hash_key = hash.keys
       @answer += hash["○"] if hash_key == ["○"]
+    end 
+  
+    puts @answer
+ 
   end
 
-
-    
- 
-end
-puts answer 
 
 
 end 
 
-puts 高さを入力してください
+puts "高さを入力してください"
 height = gets.to_i
 
-puts 幅を入力してください
+puts "幅を入力してください"
 width = gets.to_i
 
 strack_out = Strack_out.new(height,width)
-# puts maru_numbers
+puts strack_out.answer
+
