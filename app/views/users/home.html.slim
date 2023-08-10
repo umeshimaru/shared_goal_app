@@ -28,8 +28,10 @@ div.big-wrapper
                     = form.label :password,"パスワード",class:'control-label', for: 'recipient-password'
                     = form.password_field :encrypted_password, class: 'form-control', id: 'recipient-passeord'
 
-                 form-group
-                    = form.submit
+            .modal-footer
+              button.btn.btn-default(type="button" data-dismiss="modal" )閉じる
+              button.btn.btn-primary(type="button")登録
+                    
 
       
 
