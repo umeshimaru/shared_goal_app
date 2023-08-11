@@ -43,6 +43,8 @@ group :development, :test do
   gem 'bootstrap-sass', '~> 3.3.6'
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
