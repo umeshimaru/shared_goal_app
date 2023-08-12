@@ -32,7 +32,10 @@ div.big-wrapper
                  .modal-footer
                     button.btn.btn-default(type="button" data-dismiss="modal" )閉じる
                     form-group
-                    = form.submit "登録", class: 'btn btn-primary'
+                     = button_to '登録',{ controller: 'devise/registrations', action: 'create' } , method: :post, params: { user: @user.attributes }, class: 'btn btn-primary'
+
+                     
+
                     
 
       
