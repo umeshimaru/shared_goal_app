@@ -7,9 +7,9 @@ RSpec.describe "Users", type: :system do
       visit  users_home_path
       click_on 'アカウント新規登録へ'
 
-      fill_in 'recipient-name',     with: 'まさなかにき'
-      fill_in 'recipient-email',    with: 'amgajdjkd@yahoo.co.jp'
-      fill_in 'recipient-password', with: 'box1234'
+      fill_in 'user-name',     with: 'まさなかにき'
+      fill_in 'create-email',  with: 'amgajdjkd@yahoo.co.jp'
+      fill_in 'password',      with: 'box1234'
       click_on '登録'
 
 

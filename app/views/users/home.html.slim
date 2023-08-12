@@ -18,16 +18,16 @@ div.big-wrapper
             .modal-body  
               = form_with(model: @user,  local: true) do |form|
                  form-group
-                    = form.label :name,"ユーザー名",class:'control-label', for: 'recipient-name'
-                    = form.text_field :name, class: 'form-control', id: 'recipient-name'
+                    = form.label :name,"ユーザー名",class:'control-label', for: 'user-name'
+                    = form.text_field :name, class: 'form-control', id: 'user-name'
 
                  form-group
-                    = form.label :email,"メールアドレス",class:'control-label', for: 'recipient-email'
-                    = form.email_field :email, class: 'form-control', id: 'recipient-email'
+                    = form.label :email,"メールアドレス",class:'control-label', for: 'create-email'
+                    = form.email_field :email, class: 'form-control', id: 'create-email'
 
                  form-group
-                    = form.label :password,"パスワード",class:'control-label', for: 'recipient-password'
-                    = form.password_field :encrypted_password, class: 'form-control', id: 'recipient-password'
+                    = form.label :password,"パスワード",class:'control-label', for: 'password'
+                    = form.password_field :encrypted_password, class: 'form-control', id: 'password'
 
                  .modal-footer
                     button.btn.btn-default(type="button" data-dismiss="modal" )閉じる
