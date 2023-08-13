@@ -41,6 +41,12 @@ group :development, :test do
   gem 'slim-rails'
   gem 'html2slim'
   gem 'bootstrap-sass', '~> 3.3.6'
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem 'capybara'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+ 
 end
 
 group :development do
