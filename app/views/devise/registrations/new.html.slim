@@ -43,41 +43,33 @@ div.big-wrapper
                   .form-group
                   = f.submit '登録', class: 'btn btn-primary'
               
-  /
+  div.medium-wrapper2
     div.inline-block
       p.col-md-8
         | ログイン
-      = form_with model: @user do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
-        .form-group.col-md-8
-          =f.label :email,"メール"
-          =f.text_field :email, class: 'form-control col-md-6', placeholder: 'Enter email'
+        .form-group.col-md-8.field
+          = f.label :email,"メール"
+          = f.text_field :email, autofocus: true, autocomplete: "email", class: 'form-control   col-md-6', placeholder: 'Enter email'
 
-        .form-group.col-md-8
-          =f.label :encrypted_password,"パスワード"
-          p 
-            =link_to "パスワードお忘れの方"
-          =f.password_field :encrypted_password, class: 'form-control ', placeholder: 'Enter password'
+        .form-group.col-md-8.field
+          = f.label :encrypted_password,"パスワード"
+          =link_to "(パスワードお忘れですか?)", new_password_path(resource_name)
+          = f.password_field :encrypted_password, autocomplete: "current-password", class:  'form-control ', placeholder: 'Enter password'
+       
+          
 
-        .form-group.form-check.col-md-8
-          =f.check_box :remember_created_at ,class: 'form-check-label'
-          span 次回以降自動ログイン
-              
-  
-          = f.submit "ログイン",class: 'btn btn-primary'
+        - if devise_mapping.rememberable?
+          .form-group.field
+            = f.check_box :remember_me 
+            = f.label :remember_me
 
-  
+        .actions
+          = f.submit "ログイン", class: 'btn btn-primary'
+ 
+        
 
-
-
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 
                     
 
