@@ -17,7 +17,7 @@ div.big-wrapper
               h4.modal-title#exampleModalLabel 新規登録
             .modal-body  
               = form_for(resource, as: resource_name, url: registration_path(resource_name),local: true) do |f| 
-                = render "devise/shared/error_messages", resource: resource 
+                = render "devise/shared/error_messages", resource: @user
                 .form-group
                   = f.label :name,"ユーザー名",class:'control-label', for: 'user-name'
                   = f.text_field :name, autofocus: true, class: 'form-control', id: 'user-name'
