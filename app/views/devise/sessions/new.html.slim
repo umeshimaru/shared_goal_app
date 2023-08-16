@@ -43,31 +43,29 @@ div.big-wrapper
                   .form-group
                   = f.submit '登録', class: 'btn btn-primary'
 
-  div.medium-wrapper2
+  
     div.inline-block 
        p.col-md-8
         | ログイン
+
        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
-         div.form-group
+         div.form-group.col-md-8
            = f.label :email 
-           = f.email_field :email, autofocus: true, autocomplete: "email" 
+           = f.email_field :email, autofocus: true, autocomplete: "email" , class: 'form-control col-md-6'
   
 
-         div.form-group
+         div.form-group.col-md-8
            = f.label :password 
-           = f.password_field :password, autocomplete: "current-password" 
+           = f.password_field :password, autocomplete: "current-password", class: 'form-control col-md-6'
   
 
          - if devise_mapping.rememberable? 
-           div.form-group
-             = f.check_box :remember_me
+           div.form-group.col-md-8
+             = f.check_box :remember_me,class: 'form-check-label'
              = f.label :remember_me 
     
-  
-
-  
-           div.form-group
-           = f.submit "Log in" 
+           div.form-group.form-check.col-md-8
+           = f.submit "Log in" ,class: 'btn btn-primary'
 
 
-        
+           = render "devise/shared/links" 
