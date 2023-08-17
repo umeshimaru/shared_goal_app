@@ -16,7 +16,7 @@ div.big-wrapper
                 span[aria-hidden="true"] &times;
               h4.modal-title#exampleModalLabel 新規登録
             .modal-body  
-              = form_for(resource, as: resource_name, url: registration_path(resource_name),local: true) do |f| 
+              = form_with(model: resource, url: registration_path(resource_name), local: true) do |f|
                 = render "devise/shared/error_messages", resource: @user
                 .form-group
                   = f.label :name,"ユーザー名",class:'control-label', for: 'user-name'
