@@ -7,15 +7,27 @@ RSpec.describe User, type: :model do
   end
 
   describe 'nameカラム' do 
-    it 'is invalid without a name' do 
-     @user.name = nil
-     expect(@user).to be_invalid
+    it 'should be invalid without a name' do 
+      @user.name = nil
+      expect(@user).to be_invalid
     end   
-
     it 'should be unique in name' do 
       @user.save
       user = FactoryBot.build(:user, name: '梅田')
       expect(user).to be_invalid
     end
   end 
-end
+
+  describe 'emailカラム' do 
+    it 'should be invalid without email' do 
+      @user.email = nil 
+      expect(@user).to be_invalid
+    end
+    it 'should be unique email' do 
+      @user.save
+      user = FactoryBot.build(:user, email: "amagkd@yahoo.co.jp")
+      expect(user).to be_invalid
+    end
+  end
+
+end 
