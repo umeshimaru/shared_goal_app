@@ -5,4 +5,15 @@ class UsersController < ApplicationController
   def new
     
   end
+
+  def create 
+    if @user.save
+      
+    else
+      render template: " sessions/new"
+    end
+  end
+  def set_goal
+
+  end
 end
