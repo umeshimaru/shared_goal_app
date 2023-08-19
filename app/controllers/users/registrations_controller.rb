@@ -3,6 +3,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name,:password_confirmation,])
+    # 他のカスタム属性も必要に応じて追加
+  end
 
   # GET /resource/sign_up
   # def new
@@ -59,5 +65,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+  end
 
 end
