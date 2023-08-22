@@ -1,0 +1,27 @@
+h1 Listing monthly_goals
+
+table
+  thead
+    tr
+      th Monthly goal
+      th Penalty name
+      th Image
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @monthly_goals.each do |monthly_goal|
+      tr
+        td = monthly_goal.monthly_goal
+        td = monthly_goal.penalty_name
+        td = monthly_goal.image
+        td = monthly_goal.user
+        td = link_to "Show", monthly_goal
+        td = link_to "Edit", edit_monthly_goal_path(monthly_goal)
+        td = link_to "Destroy", monthly_goal, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "New Monthly goal", new_monthly_goal_path
