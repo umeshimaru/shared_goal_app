@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :monthly_goals
   devise_for :users,  controllers: {
     registrations:  'users/registrations'
