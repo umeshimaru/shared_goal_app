@@ -1,7 +1,8 @@
 class CreateMonthlyGoals < ActiveRecord::Migration[6.1]
   def change
     create_table :monthly_goals do |t|
-      t.string　goal_achieved_at :monthly_goal
+      t.string :monthly_goal
+      t.date :goal_achieved_at
       t.string :penalty_name
       t.string :image
       t.references :user, null: false, foreign_key: true

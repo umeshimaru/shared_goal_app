@@ -65,6 +65,6 @@ class MonthlyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def monthly_goal_params
-      params.require(:monthly_goal).permit(:monthly_goal, :penalty_name, :image, :user_id)
+      params.require(:monthly_goal).permit(:monthly_goal, :goal_achieved_at, :penalty_name, :image, :user_id)
     end
 end

@@ -69,6 +69,7 @@ RSpec.describe "/monthly_goals", type: :request do
         expect(response).to redirect_to(monthly_goal_url(MonthlyGoal.last))
       end
     end
+  
 
     context "with invalid parameters" do
       it "does not create a new MonthlyGoal" do
@@ -82,9 +83,9 @@ RSpec.describe "/monthly_goals", type: :request do
         post monthly_goals_url, params: { monthly_goal: invalid_attributes }
         expect(response).to be_successful
       end
-    
+    end 
     end
-  end
+
 
   describe "PATCH /update" do
     context "with valid parameters" do
@@ -114,9 +115,9 @@ RSpec.describe "/monthly_goals", type: :request do
         patch monthly_goal_url(monthly_goal), params: { monthly_goal: invalid_attributes }
         expect(response).to be_successful
       end
-    
     end
   end
+  
 
   describe "DELETE /destroy" do
     it "destroys the requested monthly_goal" do
@@ -132,4 +133,4 @@ RSpec.describe "/monthly_goals", type: :request do
       expect(response).to redirect_to(monthly_goals_url)
     end
   end
-end
+end 
