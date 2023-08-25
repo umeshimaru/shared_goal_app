@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   
   resources :monthly_goals
   devise_for :users,  controllers: {
-    registrations:  'users/registrations'
+    registrations:  'users/registrations',
+    confirmations:  'users/confirmations'
   }
+  devise_scope :user do
+    get '/confirmation_email', to: 'users/confirmations#check_email'
+  end
+
   get 'users/home'
   get 'users/new'
   
