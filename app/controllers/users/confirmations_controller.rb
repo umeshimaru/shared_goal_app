@@ -16,6 +16,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
+  def check_email
+
+  end
+
   # protected
 
   # The path used after resending confirmation instructions.
