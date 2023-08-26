@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'users/home'
   get 'users/new'
+  get '/my_page/:id',to: 'users#my_page', as: 'my_page'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
