@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def home
   end
 
@@ -13,7 +14,13 @@ class UsersController < ApplicationController
       render template: " sessions/new"
     end
   end
+
   def set_goal
 
   end
+
+  def my_page
+    
+  end
+
 end

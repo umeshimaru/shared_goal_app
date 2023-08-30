@@ -21,11 +21,12 @@ class MonthlyGoalsController < ApplicationController
 
   # POST /monthly_goals or /monthly_goals.json
   def create
-    @monthly_goal = MonthlyGoal.new(monthly_goal_params)
+    @current_user = current_user
+    @monthly_goal = @current_user.build_monthly_goal(monthly_goal_params)
 
     respond_to do |format|
       if @monthly_goal.save
-        format.html { redirect_to monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
+        format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class MonthlyGoalsController < ApplicationController
   def update
     respond_to do |format|
       if @monthly_goal.update(monthly_goal_params)
-        format.html { redirect_to monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
+        format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
         format.json { render :show, status: :ok, location: @monthly_goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +66,6 @@ class MonthlyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def monthly_goal_params
-      params.require(:monthly_goal).permit(:monthly_goal, :goal_achieved_at, :penalty_name, :image, :user_id)
+      params.require(:monthly_goal).permit(:monthly_goal, :goal_achieved_at, :penalty_name, :image)
     end
 end
