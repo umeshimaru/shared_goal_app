@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :monthly_goals
+  resources :monthly_goals do 
+    member do 
+      get 'mypage'
+    end
+  end
+
+
   devise_for :users,  controllers: {
     registrations:  'users/registrations',
     confirmations:  'users/confirmations',
@@ -10,12 +16,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/confirmation_email', to: 'users/confirmations#check_email'
     get '/monthly_goals/new',  to: 'users/monthly_goals#new'
+
+
     
   end
 
 
 
-  get '/my_page/:id',       to: 'users#my_page', as: 'my_page'
 
 
   

@@ -26,7 +26,7 @@ class MonthlyGoalsController < ApplicationController
 
     respond_to do |format|
       if @monthly_goal.save
-        format.html { redirect_to monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
+        format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class MonthlyGoalsController < ApplicationController
   def update
     respond_to do |format|
       if @monthly_goal.update(monthly_goal_params)
-        format.html { redirect_to monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
+        format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
         format.json { render :show, status: :ok, location: @monthly_goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
