@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     
   end
 
-  get 'users/home'
-  get 'users/new'
+
+
   get '/my_page/:id',       to: 'users#my_page', as: 'my_page'
 
 
