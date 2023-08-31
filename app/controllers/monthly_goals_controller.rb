@@ -2,7 +2,7 @@ class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
 
   # GET /monthly_goals or /monthly_goals.json
-  def mypage
+  def my_goal
     @user = User.find(params[:id])
     @monthly_goal = @user.monthly_goal
   end
@@ -27,7 +27,7 @@ class MonthlyGoalsController < ApplicationController
 
     respond_to do |format|
       if @monthly_goal.save
-        format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
+        format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
