@@ -1,0 +1,25 @@
+h1 =  "#{@user.name}さんの目標"
+
+section 
+  h2  = "あなたの#{@monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
+  p 
+    = @monthly_goal.monthly_goal
+  p 
+    = link_to '編集'
+
+section 
+  h3 = "目標達成まであと#{@days_until_achievement.to_i}日"
+  p 
+    = "残#{@days_until_achievement.to_i}日"
+
+section 
+  h4 やることカレンダー
+
+
+section 
+  h5 バディに差出すもの
+  = image_tag @monthly_goal.image.to_s
+
+
+= link_to "New Monthly goal", new_monthly_goal_path
+= link_to "ログアウト", destroy_user_session_path, method: :delete

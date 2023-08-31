@@ -14,3 +14,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import "./my_page"

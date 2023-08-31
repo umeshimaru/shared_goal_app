@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :monthly_goals do 
     member do 
-      get 'mypage'
+      get 'my_goal'
     end
   end
 
