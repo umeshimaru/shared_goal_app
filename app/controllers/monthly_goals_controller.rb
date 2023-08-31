@@ -5,6 +5,7 @@ class MonthlyGoalsController < ApplicationController
   def my_goal
     @user = User.find(params[:id])
     @monthly_goal = @user.monthly_goal
+    @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json

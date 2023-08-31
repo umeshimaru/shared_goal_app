@@ -1,16 +1,18 @@
-h1 Listing monthly_goals
+h1 =  "#{@user.name}さんの目標"
 
-table
-  thead
-    tr
-      th Monthly goal
-      th Goal achieved at
-      th Penalty name
-      th Image
-      th User
-      th
-      th
-      th
+section 
+  h2  = "あなたの#{@monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
+  p 
+    = @monthly_goal.monthly_goal
+  p 
+    = link_to '編集'
+
+section 
+  h3 = "目標達成まであと#{@days_until_achievement.to_i}日"
+  p 
+    = "残#{@days_until_achievement.to_i}日"
+  
+    
 
   tbody
       tr
