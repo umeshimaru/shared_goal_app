@@ -11,21 +11,15 @@ section
   h3 = "目標達成まであと#{@days_until_achievement.to_i}日"
   p 
     = "残#{@days_until_achievement.to_i}日"
-  
-    
 
-  tbody
-      tr
-        td = @monthly_goal.monthly_goal
-        td = @monthly_goal.goal_achieved_at
-        td = @monthly_goal.penalty_name
-        td = @monthly_goal.image
-        td = @monthly_goal.user
-        td = link_to "Show", @monthly_goal
-        td = link_to "Edit", edit_monthly_goal_path(@monthly_goal)
-        td = link_to "Destroy", @monthly_goal, data: { confirm: "Are you sure?" }, method: :delete
+section 
+  h4 やることカレンダー
 
-br
+
+section 
+  h5 バディに差出すもの
+  = image_tag @monthly_goal.image.to_s
+
 
 = link_to "New Monthly goal", new_monthly_goal_path
 = link_to "ログアウト", destroy_user_session_path, method: :delete
