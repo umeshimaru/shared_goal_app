@@ -4,7 +4,7 @@ section
   h2  = "あなたの#{@monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
   p 
     = @monthly_goal.monthly_goal
-  p 
+  p.edit
     = link_to '編集'
 
 section 

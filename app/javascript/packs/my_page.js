@@ -1,3 +1,7 @@
-$().on(イベント, () => {
-  // 処理
+
+  $(document).on('turbolinks:load', function() {
+  $('.edit').on('click', () => {
+    console.log("テスト完了")
+  });
+  
 });
