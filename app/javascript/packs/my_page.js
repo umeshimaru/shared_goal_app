@@ -22,25 +22,26 @@
                 
                 };
 
-                $('.monthly_goal_update').on('click', (e) => {
-                  e.preventDefault();
-                  const idNumber = 2;
-                  let currentURL = location.href;
-                  let path = new URL(currentURL).pathname;
-                  let path_array = path.split('/');
-                  let id = path_array[idNumber]
-                  let inputValue = $('input').val();
+                // $('.monthly_goal_update').on('click', (e) => {
+                //   e.preventDefault();
+                //   const idNumber = 2;
+                //   let currentURL = location.href;
+                //   let path = new URL(currentURL).pathname;
+                //   let path_array = path.split('/');
+                //   let id = path_array[idNumber]
+                //   let inputValue = $('input').val();
 
-                  $.ajax({
-                    type: 'PATCH', 
-                    url: `monthly_goals/${id}`, 
-                    data: { // サーバーへ送信するデータ
-                           monthly_goal: inputValue
-                          }
-
-                  
-                
-                });
+                  // $.ajax({
+                  //   type: 'PATCH', 
+                  //   url: `monthly_goals/${id}`, 
+                  //   data: { // サーバーへ送信するデータ
+                  //          monthly_goal: inputValue
+                  //         }
+                  //         }).done(function() {
+                            
+                  //         }).fail(function(result) {
+                  // // 失敗処理
+                  //         });
 
 
               
@@ -83,6 +84,4 @@
 //     console.log("更新ボタン以外")
 //   }  
 // });
-
-    
 

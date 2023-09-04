@@ -40,7 +40,7 @@ class MonthlyGoalsController < ApplicationController
   # PATCH/PUT /monthly_goals/1 or /monthly_goals/1.json
   def update
     respond_to do |format|
-      if @monthly_goal.update(monthly_goal_params)
+      if @monthly_goal.update(judge_params)
         format.html { redirect_to mypage_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
         format.json { render :show, status: :ok, location: @monthly_goal }
       else
@@ -70,4 +70,19 @@ class MonthlyGoalsController < ApplicationController
     def monthly_goal_params
       params.require(:monthly_goal).permit(:monthly_goal, :goal_achieved_at, :penalty_name, :image)
     end
+
+    def only_monthly_goal_params
+      params.require(:monthly_goal).permit(:monthly_goal)
+    end
+
+    def judge_params
+      if params.key?(:monthly_goal)  
+        if params[:monthly_goal].key?(:goal_achieved_at)  # :monthly_goal内に:monthly_goal属性が存在するかを確認
+          return monthly_goal_params  # 存在する場合はmonthly_goal_paramsを返す
+        else 
+          return only_monthly_goal_params
+        end
+      end 
+    end
+
 end
