@@ -5,8 +5,10 @@ import { editInput } from "./components/shared";
     $('.edit-button').on('click', (e) => {
 
         e.preventDefault(); 
+
        
         editInput();
+
 
     // もし更新ボタンがなければ作成。あれば何もしない
         if ($(".monthly_goal_update").length) {
@@ -20,6 +22,7 @@ import { editInput } from "./components/shared";
                   $('.monthly_goal').append(button);
                 
                 };
+
 
                 $('.monthly_goal_update').on('click', (e) => {
                   e.preventDefault();
@@ -53,6 +56,38 @@ import { editInput } from "./components/shared";
                 // 2回目の編集リンククリック時の処理 ①インプット要素をpタグに戻す。更新ボタンの削除
     $(document).on('click', function(e) {
       if (!$(e.target).is('.monthly_goal_update,.edit-button,input')) {
+
+=======
+                // $('.monthly_goal_update').on('click', (e) => {
+                //   e.preventDefault();
+                //   const idNumber = 2;
+                //   let currentURL = location.href;
+                //   let path = new URL(currentURL).pathname;
+                //   let path_array = path.split('/');
+                //   let id = path_array[idNumber]
+                //   let inputValue = $('input').val();
+
+                  // $.ajax({
+                  //   type: 'PATCH', 
+                  //   url: `monthly_goals/${id}`, 
+                  //   data: { // サーバーへ送信するデータ
+                  //          monthly_goal: inputValue
+                  //         }
+                  //         }).done(function() {
+                            
+                  //         }).fail(function(result) {
+                  // // 失敗処理
+                  //         });
+
+
+              
+
+
+                // })
+
+              
+                // 2回目の編集リンククリック時の処理 ①インプット要素をpタグに戻す。更新ボタンの削除
+
 
         let monthly_goal = $("<p>").text(change_goal).addClass("change_goal");
         input.replaceWith(monthly_goal);
