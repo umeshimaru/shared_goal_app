@@ -1,13 +1,12 @@
-
+import { editInput } from "./components/shared";
   $(document).on('turbolinks:load', function() {
 
 
     $('.edit-button').on('click', (e) => {
-        e.preventDefault(); 
-        let change_goal = ($(".change_goal").text());
-        let input = $("<input>").val($(".change_goal").text());
-        $('.change_goal').replaceWith(input);
 
+        e.preventDefault(); 
+       
+        editInput();
 
     // もし更新ボタンがなければ作成。あれば何もしない
         if ($(".monthly_goal_update").length) {
@@ -38,10 +37,10 @@
                            monthly_goal: { monthly_goal: inputValue }
                           }
                           }).done(function() {
-                            
+                            // 成功した時の処理
                             
                           }).fail(function() {
-                            
+                            // 失敗した時の処理
                           });
 
 
