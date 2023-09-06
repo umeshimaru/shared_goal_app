@@ -14,8 +14,10 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-//= require "components/shared"
+
+import  "../components/shared"
 import "./my_page"
+
 
 
 
