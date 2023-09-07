@@ -1,10 +1,10 @@
-export function changeMonthlyGoal(){
+export function update_your_edit(input) {
                                       const idNumber = 2;
                                       let currentURL = location.href;
                                       let path = new URL(currentURL).pathname;
                                       let path_array = path.split('/');
                                       let id = path_array[idNumber]
-                                      let inputValue = $('input').val();
+                                      let inputValue = $(input).val();
 
                                       $.ajax({
                                         type: 'PATCH', 
@@ -43,9 +43,15 @@ export function changeMonthlyGoal(){
                                                   $('.monthly_goal_update').remove();
                                                  };}
 
- export function cancelPenaltyEdit(e,change_panalty_name,penalty_input){
-                                                  if (!$(e.target).is('.penalty_name_update,.penalty_edit_button,penalty_input')) {
-                                                  let penalty_name = $("<p>").text(change_panalty_name).addClass("change_penalty_name");
+ export function cancelPenaltyEdit(e,change_penalty_name,penalty_input){
+                                                  if (!$(e.target).is('.penalty_name_update,.penalty_edit_button,.penalty_input')) {
+                                                  let penalty_name = $("<p>").text(change_penalty_name).addClass("change_penalty_name");
                                                   penalty_input.replaceWith(penalty_name);
                                                   $('.penalty_name_update').remove();
                                                  };}
+
+
+ // penalty_name_update ＝ ペナルティの名前の更新ボタンのcssのクラス
+// change_panalty_name = pタグの中身
+// penalty_input = pタグの中身の入ったinput
+// penalty_edit_button 編集ボタン
