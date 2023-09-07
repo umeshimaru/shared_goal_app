@@ -41,7 +41,9 @@ class MonthlyGoalsController < ApplicationController
   def update
     respond_to do |format|
       if @monthly_goal.update(judge_params)
+
         format.html { redirect_to  my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully updated." }
+
         format.json { render :show, status: :ok, location: @monthly_goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
