@@ -32,6 +32,7 @@ import { cancelPenaltyEdit}    from "../components/shared";
                                           });
       $('.penalty_name_update').on('click', (e) => {
                                                     e.preventDefault();
+                                                    update_your_edit('.penalty_input');
                                                   });
     });
 });
