@@ -1,4 +1,4 @@
-export function update_your_edit(input) {
+export function update_your_goal(input) {
                                       const idNumber = 2;
                                       let currentURL = location.href;
                                       let path = new URL(currentURL).pathname;
@@ -11,6 +11,27 @@ export function update_your_edit(input) {
                                         url: `/monthly_goals/${id}`, 
                                         data: { // サーバーへ送信するデータ
                                                 monthly_goal: { monthly_goal: inputValue }
+                                              }
+                                              }).done(function() {
+            
+            
+                                              }).fail(function() {
+            
+                                              });
+                                    }
+export function update_your_penalty(input) {
+                                      const idNumber = 2;
+                                      let currentURL = location.href;
+                                      let path = new URL(currentURL).pathname;
+                                      let path_array = path.split('/');
+                                      let id = path_array[idNumber]
+                                      let inputValue = $(input).val();
+
+                                      $.ajax({
+                                        type: 'PATCH', 
+                                        url: `/monthly_goals/${id}`, 
+                                        data: { // サーバーへ送信するデータ
+                                                monthly_goal: { penalty_name: inputValue }
                                               }
                                               }).done(function() {
             
