@@ -1,5 +1,6 @@
-import { update_your_edit }    from "../components/shared"; 
+import { update_your_goal }    from "../components/shared"; 
 import { checkAndCreateButton} from "../components/shared"; 
+import { update_your_penalty}  from "../components/shared"; 
 import { cancelEdit}           from "../components/shared"; 
 import { cancelPenaltyEdit}    from "../components/shared"; 
 
@@ -13,7 +14,7 @@ import { cancelPenaltyEdit}    from "../components/shared";
 
       $('.monthly_goal_update').on('click', (e) => {
                                                     e.preventDefault();
-                                                    update_your_edit('input');
+                                                    update_your_goal('input');
                                                     });
       $(document).on('click', function(e) {
                                            cancelEdit(e,change_goal,input);
@@ -32,7 +33,7 @@ import { cancelPenaltyEdit}    from "../components/shared";
                                           });
       $('.penalty_name_update').on('click', (e) => {
                                                     e.preventDefault();
-                                                    update_your_edit('.penalty_input');
+                                                    update_your_penalty('.penalty_input');
                                                   });
     });
 });
