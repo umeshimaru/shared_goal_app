@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :weekly_goals
   resources :monthly_goals do 
     member do 
       get 'my_goal'

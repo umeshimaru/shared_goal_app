@@ -82,7 +82,7 @@ class MonthlyGoalsController < ApplicationController
     end
 
     def params_include_monthly_achieved_at_and_monthly_goal?
-      params[:monthly_goal].key?(:goal_achieved_at) && params[:monthly_goal].key?
+      params[:monthly_goal].key?(:goal_achieved_at) && params[:monthly_goal].key?(:monthly_goal)
     end
 
     def params_include_only_monthly_goal?

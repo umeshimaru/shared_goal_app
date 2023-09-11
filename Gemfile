@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'              
+gem "simple_calendar", "~> 2.4"
 
 
 
@@ -41,7 +42,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'slim-rails'
   gem 'html2slim'
   gem 'bootstrap-sass', '~> 3.3.6'
@@ -52,6 +52,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'hirb' 
   gem 'pry-rails' 
+  gem 'rails-i18n'
+
 
 
  
@@ -71,7 +73,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rails-i18n'
+
    
 end
 

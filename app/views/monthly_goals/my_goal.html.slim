@@ -14,6 +14,8 @@ section
 
 section 
   h4 やることカレンダー
+  = month_calendar do |date|
+    = date
 
 
 section.penalty
@@ -21,7 +23,11 @@ section.penalty
   p.change_penalty_name = @monthly_goal.penalty_name
   p
     = link_to '編集', '#', class: 'penalty_edit_button'
+    
   = image_tag @monthly_goal.image.to_s
+  p
+    = link_to '編集', '#', class: 'penalty_image_edit'
+ 
 
 
 = link_to "New Monthly goal", new_monthly_goal_path

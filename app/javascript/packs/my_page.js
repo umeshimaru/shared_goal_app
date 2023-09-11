@@ -36,6 +36,8 @@ import { cancelPenaltyEdit}    from "../components/shared";
                                                     update_your_penalty('.penalty_input');
                                                   });
     });
+
+ 
 });
   
 
