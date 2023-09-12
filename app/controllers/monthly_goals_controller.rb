@@ -28,7 +28,7 @@ class MonthlyGoalsController < ApplicationController
 
     respond_to do |format|
       if @monthly_goal.save
-        format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
+        format.html { render my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -96,7 +96,6 @@ class MonthlyGoalsController < ApplicationController
     end
 
     def judge_params
-      if params.key?(:monthly_goal)  
         if params_include_monthly_achieved_at_and_monthly_goal?
           return monthly_goal_params  # 存在する場合はmonthly_goal_paramsを返す
         elsif params_include_only_monthly_goal?
@@ -104,7 +103,6 @@ class MonthlyGoalsController < ApplicationController
         elsif params_include_only_penalty_goal?
           return only_penalty_name_params
         end
-      end 
     end
 
 end
