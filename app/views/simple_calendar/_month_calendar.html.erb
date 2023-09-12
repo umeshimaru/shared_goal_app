@@ -1,0 +1,55 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <button data-toggle="modal" data-target="#add_weekly_goal_or_todo">+</button>
+              <div class="modal fade" tabindex="-1" role="dialog" id = "add_weekly_goal_or_todo">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                   <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>One fine body&hellip;</p>
+                   </div>
+                    <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary">Save changes</button>
+                   </div>
+                 </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+
+            
+              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+              <% else %>
+                <% passed_block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+         

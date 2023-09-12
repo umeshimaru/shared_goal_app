@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_22_224602) do
+ActiveRecord::Schema.define(version: 2023_09_11_085648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,5 +45,18 @@ ActiveRecord::Schema.define(version: 2023_08_22_224602) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weekly_goals", force: :cascade do |t|
+    t.string "weekly_goal"
+    t.datetime "start_time"
+    t.bigint "user_id", null: false
+    t.bigint "monthly_goal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["monthly_goal_id"], name: "index_weekly_goals_on_monthly_goal_id"
+    t.index ["user_id"], name: "index_weekly_goals_on_user_id"
+  end
+
   add_foreign_key "monthly_goals", "users"
+  add_foreign_key "weekly_goals", "monthly_goals"
+  add_foreign_key "weekly_goals", "users"
 end
