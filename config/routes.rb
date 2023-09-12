@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
+  resources :weekly_goals
   resources :monthly_goals do 
     member do 
       get 'my_goal'
     end
   end
 
-
+   
   devise_for :users,  controllers: {
     registrations:  'users/registrations',
     confirmations:  'users/confirmations',
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   end
 
 
-
+ 
 
 
   
