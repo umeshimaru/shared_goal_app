@@ -3,6 +3,9 @@ import { checkAndCreateButton} from "../components/shared";
 import { update_your_penalty}  from "../components/shared"; 
 import { cancelEdit}           from "../components/shared"; 
 import { cancelPenaltyEdit}    from "../components/shared"; 
+// import { displayNone}          from "../components/shared"; 
+
+
 
   $(document).on('turbolinks:load', function() {
     $('.edit-button').on('click', (e) => {
@@ -36,6 +39,12 @@ import { cancelPenaltyEdit}    from "../components/shared";
                                                     update_your_penalty('.penalty_input');
                                                   });
     });
+      $('.penalty_image_edit').on('click', (e) => {
+        e.preventDefault();
+        $('#file-upload-form').toggle();
+      
+                                                     
+                                                 });
 
  
 });

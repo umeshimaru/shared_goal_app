@@ -5,6 +5,7 @@ class MonthlyGoalsController < ApplicationController
   def my_goal
     @user = User.find(params[:id])
     @monthly_goal = @user.monthly_goal
+
     @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
   end
 
@@ -28,7 +29,7 @@ class MonthlyGoalsController < ApplicationController
 
     respond_to do |format|
       if @monthly_goal.save
-        format.html { render my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
+        format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
