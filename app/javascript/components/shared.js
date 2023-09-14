@@ -71,6 +71,12 @@ export function update_your_penalty(input) {
                                                   $('.penalty_name_update').remove();
                                                  };}
 
+//  export function displayNone(e){
+//                               if (!$(e.target).is('.penalty_name_update,.penalty_edit_button,.penalty_input')) {
+//                                 $('#file-upload-form').hide();
+                              
+//                                 };}
+
 
  // penalty_name_update ＝ ペナルティの名前の更新ボタンのcssのクラス
 // change_panalty_name = pタグの中身

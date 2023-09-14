@@ -65,6 +65,7 @@ class WeeklyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def weekly_goal_params
-      params.require(:weekly_goal).permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
+      byebug
+      params.permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
     end
 end
