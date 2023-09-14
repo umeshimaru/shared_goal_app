@@ -30,7 +30,11 @@ section.penalty
   = image_tag @monthly_goal.image.to_s
   p
     = link_to '編集', '#', class: 'penalty_image_edit'
- 
+    
+#file-upload-form style="display: none;"
+  = form_with model: @monthly_goal , local: true, id: 'image_update' do |f|
+    = f.file_field :image
+    = f.submit '更新'
 
   
 

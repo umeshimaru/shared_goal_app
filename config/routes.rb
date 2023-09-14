@@ -11,17 +11,14 @@ Rails.application.routes.draw do
   devise_for :users,  controllers: {
     registrations:  'users/registrations',
     confirmations:  'users/confirmations',
-   
-
   }
   devise_scope :user do
     get '/confirmation_email', to: 'users/confirmations#check_email'
     get '/monthly_goals/new',  to: 'users/monthly_goals#new'
-
-
-    
   end
 
+   post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
+   post '/monthly_goals/:id/my_goal', to: 'tasks#create'
 
  
 
