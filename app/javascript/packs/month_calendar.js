@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function() {
 
-  $('#add_weekly_goal').on('click',  () =>{
-    // let day = $(".day")
-    // console.log(day);
+  $('.dropdown-menu').on('click',  () =>{
+let b = $("a[class = weekly_goal]").data();
+console.log(b);
   });
 
 });

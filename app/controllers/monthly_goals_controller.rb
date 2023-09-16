@@ -84,6 +84,10 @@ class MonthlyGoalsController < ApplicationController
       params.require(:monthly_goal).permit(:penalty_name)
     end
 
+    def only_penalty_image_params
+      params.require(:monthly_goal).permit(:image)
+    end
+
     def params_include_monthly_achieved_at_and_monthly_goal?
       params[:monthly_goal].key?(:goal_achieved_at) && params[:monthly_goal].key?(:monthly_goal)
     end
@@ -96,13 +100,19 @@ class MonthlyGoalsController < ApplicationController
       params[:monthly_goal].key?(:penalty_name) 
     end
 
+    def params_include_only_image?
+      params[:monthly_goal].key?(:image)
+    end
+
     def judge_params
         if params_include_monthly_achieved_at_and_monthly_goal?
-          return monthly_goal_params  # 存在する場合はmonthly_goal_paramsを返す
+           monthly_goal_params  # 存在する場合はmonthly_goal_paramsを返す
         elsif params_include_only_monthly_goal?
-          return only_monthly_goal_params
+           only_monthly_goal_params
         elsif params_include_only_penalty_goal?
-          return only_penalty_name_params
+           only_penalty_name_params
+        elsif params_include_only_image?
+           only_penalty_image_params
         end
     end
 
