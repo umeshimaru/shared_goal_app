@@ -8,7 +8,9 @@ RSpec.describe "Users", type: :system do
  describe "user creates an account" do 
     it "アカウント新規作成したらユーザーテーブルのレコードが＋１する" do 
       visit   '/users/sign_in'
+      expect(current_path).to eq new_user_session_path
       click_on 'アカウント新規登録へ'
+      expect(current_path).to eq new_user_registration_path
       fill_in 'user-name',                  with: @user.name
       fill_in 'user_email',                 with: @user.email
       fill_in 'user_password',              with: @user.password

@@ -53,6 +53,8 @@ group :development, :test do
   gem 'hirb' 
   gem 'pry-rails' 
   gem 'rails-i18n'
+  gem 'database_rewinder'
+
 
 
 
