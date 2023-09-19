@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   before do
-    @user = FactoryBot.build(:user)
-    @monthly_goal = FactoryBot.build(:monthly_goal)
+    @user = FactoryBot.create(:user)
+    @monthly_goal = FactoryBot.build(:monthly_goal,user: @user)
+    puts @monthly_goal.inspect
   end
 
  describe "user creates an account" do 
@@ -17,17 +18,15 @@ RSpec.describe "Users", type: :system do
       fill_in 'user_password',              with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
       expect { click_on '登録' }.to change { User.count }.by(1)
-      sign_in @user 
-
-      # visit 'monthly_goals/new'
-      # expect(current_path).to eq new_monthly_goal_path
-      # fill_in 'Monthly goal', with: @monthly_goal.monthly_goal
-      # select '2023', from: 'monthly_goal_goal_achieved_at_1i'
-      # select '9'   , from: 'monthly_goal_goal_achieved_at_2i'
-      # select '29'  , from: 'monthly_goal_goal_achieved_at_3i'
-      # fill_in 'Penalty name', with: @monthly_goal.penalty_name
-      # attach_file "monthly_goal[image]","app/assets/images/test.png" 
-      # expect {click_button '登録する' }.to change { MonthlyGoal.count }.by(1)
+      visit 'monthly_goals/new'
+      expect(current_path).to eq new_monthly_goal_path
+      fill_in 'Monthly goal', with: @monthly_goal.monthly_goal
+      select '2023', from: 'monthly_goal_goal_achieved_at_1i'
+      select '9'   , from: 'monthly_goal_goal_achieved_at_2i'
+      select '29'  , from: 'monthly_goal_goal_achieved_at_3i'
+      fill_in 'Penalty name', with: @monthly_goal.penalty_name
+      attach_file "monthly_goal[image]","app/assets/images/test.png" 
+      expect {click_button '登録する' }.to change { MonthlyGoal.count }.by(1)
       
 
 
