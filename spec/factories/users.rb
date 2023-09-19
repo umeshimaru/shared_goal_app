@@ -4,7 +4,6 @@ FactoryBot.define do
     email                   {"amagkd@yahoo.co.jp"}
     password                {"masamasa4649"}
     password_confirmation   {"masamasa4649"}
-    confirmed_at { Date.today }
   end
 end
 
