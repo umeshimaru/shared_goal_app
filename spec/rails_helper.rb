@@ -32,11 +32,21 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Warden::Test::Helpers
 
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -52,13 +62,7 @@ RSpec.configure do |config|
   #       # ...
   #     end
   #
-  config.before(:suite) do
-    DatabaseRewinder.clean_all
-  end
 
-  config.after(:each) do
-    DatabaseRewinder.clean
-  end
   # The different available types are documented in the features, such as in
   # https://rspec.info/features/6-0/rspec-rails
   config.infer_spec_type_from_file_location!

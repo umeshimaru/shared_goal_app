@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name,:password_confirmation,])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name,:password_confirmation,:password,:email])
     # 他のカスタム属性も必要に応じて追加
   end
   # The path used after sign up.
