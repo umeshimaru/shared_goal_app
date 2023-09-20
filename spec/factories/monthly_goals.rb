@@ -4,6 +4,6 @@ FactoryBot.define do
     goal_achieved_at { "2023-08-23" }
     penalty_name { "MyString" }
     image { "MyString" }
-    association  :user 
+    user_id { association :user } 
   end
 end
