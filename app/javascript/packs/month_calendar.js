@@ -4,5 +4,4 @@ $(document).on('turbolinks:load', function() {
 let b = $("a[class = weekly_goal]").data();
 console.log(b);
   });
-
 });

@@ -22,6 +22,7 @@ class WeeklyGoalsController < ApplicationController
   # POST /weekly_goals or /weekly_goals.json
   def create
     @weekly_goal = WeeklyGoal.new(weekly_goal_params)
+    byebug
 
     respond_to do |format|
       if @weekly_goal.save
