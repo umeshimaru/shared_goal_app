@@ -14,11 +14,12 @@ section
 
 section 
   h4 やることカレンダー
-  = month_calendar do |date|
+  = month_calendar events: @events do |date, events|
     = date
+    - events.each do |event|
+      div
+        = event.weekly_goal
 
-
-  
 
 
 section.penalty

@@ -1,8 +1,7 @@
 $(document).on('turbolinks:load', function() {
 
-  $('.dropdown-menu').on('click',  () =>{
-let b = $("a[class = weekly_goal]").data();
-console.log(b);
+  $('.weekly_goal').on('click',  () =>{
+   a = $("ul[class = dropdown-menu]").data();
+   console.log(a);
   });
-
 });
