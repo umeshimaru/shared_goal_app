@@ -1,12 +1,15 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
 
+  def index
+
+  end
   # GET /monthly_goals or /monthly_goals.json
   def my_goal
     @user = User.find(params[:id])
     @monthly_goal = @user.monthly_goal
-
     @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
+    @events = @user.weekly_goals
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json

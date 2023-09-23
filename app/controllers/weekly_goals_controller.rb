@@ -13,6 +13,7 @@ class WeeklyGoalsController < ApplicationController
   # GET /weekly_goals/new
   def new
     @weekly_goal = WeeklyGoal.new
+    
   end
 
   # GET /weekly_goals/1/edit
@@ -21,18 +22,23 @@ class WeeklyGoalsController < ApplicationController
 
   # POST /weekly_goals or /weekly_goals.json
   def create
+  
     @weekly_goal = WeeklyGoal.new(weekly_goal_params)
-    byebug
+    @user = User.find(params[:id])
+  
 
     respond_to do |format|
       if @weekly_goal.save
-        format.html { redirect_to weekly_goal_url(@weekly_goal), notice: "Weekly goal was successfully created." }
+        format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully created." }
         format.json { render :show, status: :created, location: @weekly_goal }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to  my_goal_monthly_goal_path(@user) , status: :unprocessable_entity }
         format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
       end
+      # byebug
     end
+  
+
   end
 
   # PATCH/PUT /weekly_goals/1 or /weekly_goals/1.json
@@ -66,7 +72,7 @@ class WeeklyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def weekly_goal_params
- 
-      params.permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
+      params.require(:weekly_goal).permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
+      
     end
 end

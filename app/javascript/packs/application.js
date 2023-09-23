@@ -21,7 +21,3 @@ import "./my_goal"
 
 
 
-
-
-
-
