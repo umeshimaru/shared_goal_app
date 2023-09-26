@@ -1,5 +1,6 @@
 class MonthlyGoal < ApplicationRecord
   belongs_to :user
+  has_many :weekly_goals
   mount_uploader :image,ImageUploader
 
   validates :monthly_goal , presence:true, length: { maximum: 100 }

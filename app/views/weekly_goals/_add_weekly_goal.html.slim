@@ -1,0 +1,30 @@
+.modal.fade role="dialog" id="myModal" aria-labelledby="exampleModalLabel"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h4.modal-title 週間目標
+      .modal-body
+        = form_with model: @weekly_goal, scope: :weekly_goal do |f|
+          = f.label :weekly_goal, "週間目標", class: "control-label"
+          = f.text_field :weekly_goal, class: "form-control"
+          = f.hidden_field :start_time,  id: "day" , class: "form-control"
+          = f.hidden_field :monthly_goal_id, value: @monthly_goal.user_id, class: "form-control"
+          = f.hidden_field :user_id, value: @user.id, class: "form-control"
+          .modal-footer
+          = button_to "閉じる", "#", type: "button", class: "btn btn-default", data: { toggle: "modal", target: "#myModal" }
+          = f.submit "登録", class: "btn btn-primary"
+
+.modal.fade tabindex="-1" role="dialog" id="add_task"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h4.modal-title 今日のタスク
+      .modal-body
+        input.form-control
+      .modal-footer
+        = button_to "閉じる", "#", type: "button", class: "btn btn-default", data: { dismiss: "modal" }
+        = button_to "登録する", { controller: 'tasks', action: 'create' }, type: "button", class: "btn btn-primary"

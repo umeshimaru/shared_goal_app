@@ -14,13 +14,26 @@ section
 
 section 
   h4 やることカレンダー
-  = month_calendar do |date|
+  = month_calendar events: @events do |date, events|
     = date
-
-
-  
-
-
+    .dropdown
+       button.btn.btn-default.dropdown-toggle(type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" )
+        | +
+        span.caret 
+       ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+         li
+           a.weekly_goal[href="#" data-toggle="modal" data-target="#myModal" data-day=date] 週間目標
+           
+         li
+           a[href="#" data-toggle="modal" data-target="#add_task"] タスク
+         
+         
+         
+    - events.each do |event|
+      div
+        = event.weekly_goal
+   
+              
 section.penalty
   h5 バディに差出すもの
   p.change_penalty_name = @monthly_goal.penalty_name
@@ -35,6 +48,7 @@ section.penalty
   = form_with model: @monthly_goal , local: true, id: 'image_update' do |f|
     = f.file_field :image
     = f.submit '更新'
+= render partial: 'weekly_goals/add_weekly_goal'
 
   
 

@@ -4,7 +4,7 @@
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
   </div>
-
+  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -18,20 +18,12 @@
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day)  do %>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">+<span class="caret"></span>
-                </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#" class = "weekly_goal" data-toggle="modal" data-target="#add_weekly_goal" data-date =<%= day%> > 週間目標</a></li>
-                    <li><a href="#"data-toggle="modal" data-target="#add_task">タスク</a></li>
-                  </ul>
-              </div>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
-            <% end %>
+            <% end %>          
           <% end %>
         </tr>
       <% end %>
@@ -39,47 +31,4 @@
   </table>
 </div>
   </div>
-  
-               <div class="modal fade" tabindex="-1" role="dialog" id = "add_weekly_goal">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                   <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title">やること</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= form_with model: @weekly_goal do |f| %>
-                        <%= f.text_field   :weekly_goal                                     ,class: "form-control" %>
-                        <%= f.hidden_field :start_time,       value: "あ"                  ,class: "form-control" %>
-                        <%= f.hidden_field :monthly_goal_id,  value: @monthly_goal.user_id  ,class: "form-control" %>
-                        <%= f.hidden_field :user_id,          value: @user.id               ,class: "form-control" %>
-                    <div class="modal-footer">
-                    <%= button_to "閉じる", "#", type: "button", class: "btn btn-default ",data: { dismiss: "modal" } %>
-                    <%= f.submit "登録",class: "btn btn-primary" %>
-                    <% end %>
-                   </div>
-                   </div>
-                 </div>
-                </div>
-              </div>
- <div class="modal fade" tabindex="-1" role="dialog" id = "add_task">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                   <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title">やること</h4>
-                    </div>
-                    <div class="modal-body">
-                    
-                      <input class= "form-control">
-                      
-                   </div>
-                    <div class="modal-footer">
-                    <%= button_to "閉じる", "#", type: "button", class: "btn btn-default", data: { dismiss: "modal" }  %>
-                    <%= button_to "登録する", {controller: 'tasks',action: 'create'
-                      }, type: "button", class: "btn btn-primary" %>
-                    
-                   </div>
-                 </div>
-                </div>
-              </div>
+              

@@ -16,9 +16,7 @@ ActiveStorage.start()
 
 
 import  "../components/shared"
-import "./month_calendar"
 import "./my_goal"
-
 
 
 
