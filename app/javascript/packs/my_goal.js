@@ -45,7 +45,13 @@ import { cancelPenaltyEdit}    from "../components/shared";
       
                                                      
                                                  });
-
+      $("a[class = 'weekly_goal']").on('click',(e)=> {
+                                                  
+      let startDay = $(e.target).data("day");                                   
+      $("#day").val(startDay);
+                                                  
+                                
+    });
  
 });
   
