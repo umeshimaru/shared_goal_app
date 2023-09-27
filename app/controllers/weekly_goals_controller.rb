@@ -22,18 +22,16 @@ class WeeklyGoalsController < ApplicationController
 
   # POST /weekly_goals or /weekly_goals.json
   def create
-  
+    
     @weekly_goal = WeeklyGoal.new(weekly_goal_params)
     @user = User.find(params[:id])
-  
-
     respond_to do |format|
       if @weekly_goal.save
         format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully created." }
-        format.json { render :show, status: :created, location: @weekly_goal }
+        format.js { redirect_to my_goal_monthly_goal_path(@user) , status: :created }
       else
-        format.html { redirect_to  my_goal_monthly_goal_path(@user) , status: :unprocessable_entity }
-        format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
+        # format.html { redirect_to  my_goal_monthly_goal_path(@user) , status: :unprocessable_entity }
+        format.js { render :errors, status: :unprocessable_entity }
       end
       # byebug
     end
@@ -46,7 +44,7 @@ class WeeklyGoalsController < ApplicationController
     respond_to do |format|
       if @weekly_goal.update(weekly_goal_params)
         format.html { redirect_to weekly_goal_url(@weekly_goal), notice: "Weekly goal was successfully updated." }
-        format.json { render :show, status: :ok, location: @weekly_goal }
+        format.json {redirect_to weekly_goal_url(@weekly_goal) , status: :ok, location: @weekly_goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
@@ -72,6 +70,7 @@ class WeeklyGoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def weekly_goal_params
+     
       params.require(:weekly_goal).permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
       
     end
