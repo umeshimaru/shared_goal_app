@@ -25,7 +25,7 @@ section
            a.weekly_goal[href="#" data-toggle="modal" data-target="#myModal" data-day=date] 週間目標
            
          li
-           a[href="#" data-toggle="modal" data-target="#add_task"] タスク
+           a[href="#" data-toggle="modal" data-target="#add_task" data-day=date] タスク
          
          
          
@@ -49,6 +49,7 @@ section.penalty
     = f.file_field :image
     = f.submit '更新'
 = render partial: 'weekly_goals/add_weekly_goal'
+= render partial: 'tasks/task_modal'
 
   
 
