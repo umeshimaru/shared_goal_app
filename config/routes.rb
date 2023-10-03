@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
   resources :weekly_goals
+  resources :tasks
   resources :monthly_goals do 
     member do 
       get 'my_goal'
     end
   end
+  
 
    
   devise_for :users,  controllers: {
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   end
 
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
-   post '/monthly_goals/:id/my_goal', to: 'tasks#create'
+
 
  
 

@@ -48,9 +48,12 @@ import { cancelPenaltyEdit}    from "../components/shared";
       $("a[class = 'weekly_goal']").on('click',(e)=> {
                                                   
       let startDay = $(e.target).data("day");                                   
-      $("#day").val(startDay);
+      $("#day").val(startDay);                   
+    });
+      $("a[class = 'task']").on('click',(e)=> {
                                                   
-                                
+      let day = $(e.target).data("day");                                   
+      $("#start_date").val(day);                   
     });
  
 });
