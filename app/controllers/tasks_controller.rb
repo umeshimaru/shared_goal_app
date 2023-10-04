@@ -28,7 +28,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    byebug
     params.require(:task).permit(:task,:start_time,:end_time,:weekly_goal_id)
   end
 end

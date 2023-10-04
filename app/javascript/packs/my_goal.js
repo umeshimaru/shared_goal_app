@@ -52,9 +52,21 @@ import { cancelPenaltyEdit}    from "../components/shared";
     });
       $("a[class = 'task']").on('click',(e)=> {
                                                   
-      let day = $(e.target).data("day");                                   
-      $("#start_date").val(day);                   
+                                              let day = $(e.target).data("day");                                   
+                                              $("#start_date").val(day);                   
     });
+    $(".not-display").hide();
+    $("label[class='change-color']").on('click',(e) => {
+      // クリックされたラベルに赤色を設定
+      $("label[class='change-color']").css('color',"black");
+      $(e.target).css("color", "red");
+    
+
+    });
+    
+
+
+
  
 });
   
