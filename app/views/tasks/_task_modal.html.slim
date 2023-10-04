@@ -19,12 +19,13 @@
               = f.date_field   :end_time,                            class: "form-control"
           - if @events.present?
             - @events.each do |weekly_goal|
-              = f.fields_for :tasks, @weekly_goal.tasks.build do |task_form|
-                = task_form.hidden_field :weekly_goal_id, value: weekly_goal.id, class: "form-control"
-                = f.submit weekly_goal.weekly_goal,class: "btn btn-success"
+              .custom-radio 
+                = f.label :weekly_goal,weekly_goal.weekly_goal,for: "weekly_goal_#{weekly_goal.id}",class: "change-color"
+                = f.radio_button :weekly_goal_id,weekly_goal.id, id:"weekly_goal_#{weekly_goal.id}",class: "not-display"
           - else 
             p 
               | 週間目標を先に登録してください
           .modal-footer
             = button_to "閉じる", "#", type: "button", class: "btn btn-default", data: { toggle: "modal", target: "#add_task" }
+            = f.submit "登録", class: "btn btn-primary"
             
