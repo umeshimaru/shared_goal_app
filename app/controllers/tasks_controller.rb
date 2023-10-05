@@ -8,9 +8,10 @@ class TasksController < ApplicationController
     @current_user = current_user
     respond_to do |format|
       if @task.save
-        format.js { redirect_to my_goal_monthly_goal_path(@current_user) , status: :created }
+        format.js {redirect_to my_goal_monthly_goal_path(@current_user),notice: "task was successfully created."}
       else
-        format.js { render :task_errors, status: :unprocessable_entity }
+        format.js {render :task_errors,status: :unprocessable_entity }
+        
       end
     end
   end

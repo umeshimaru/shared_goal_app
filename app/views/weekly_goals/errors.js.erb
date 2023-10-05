@@ -1,4 +1,2 @@
-
-
-$('.js-weekly-goal-errors').replaceWith('<%= j(render("layouts/validation_errors", instance: @weekly_goal)) %>');
+$('.js-weekly-goal-errors').replaceWith('<%= j(render("shared/validation_errors", instance: @weekly_goal)) %>');
 
