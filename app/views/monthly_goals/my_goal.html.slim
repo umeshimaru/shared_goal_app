@@ -14,8 +14,8 @@ section
 
 section 
   h4 やることカレンダー
-  = month_calendar events: @events do |date, events|
-    = date
+  = month_calendar attribute: :start_time, end_attribute: :end_time, events: @events do |date, events|
+    = date.day
     .dropdown
        button.btn.btn-default.dropdown-toggle(type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" )
         | +
@@ -26,12 +26,20 @@ section
            
          li
            a.task[href="#" data-toggle="modal" data-target="#add_task" data-day=date] タスク
-         
-         
-         
+ 
     - events.each do |event|
       div
         = event.weekly_goal
+        - event.tasks.each do |task|
+          div
+            = task.task
+        
+        
+    
+        
+
+     
+      
    
               
 section.penalty
