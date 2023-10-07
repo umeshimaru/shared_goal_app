@@ -1,5 +1,6 @@
 class WeeklyGoalsController < ApplicationController
-  before_action :set_weekly_goal, only: %i[ show edit update destroy ]
+  before_action :set_weekly_goal,   only: %i[ show edit update  ]
+  before_action :find_current_user, only: %i[ create destroy  ]
 
   # GET /weekly_goals or /weekly_goals.json
   def index
@@ -24,7 +25,6 @@ class WeeklyGoalsController < ApplicationController
   def create
     
     @weekly_goal = WeeklyGoal.new(weekly_goal_params)
-    @user = User.find(params[:id])
     respond_to do |format|
       if @weekly_goal.save
         format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully created." }
@@ -54,10 +54,9 @@ class WeeklyGoalsController < ApplicationController
 
   # DELETE /weekly_goals/1 or /weekly_goals/1.json
   def destroy
-    @weekly_goal.destroy
-
+    @user.weekly_goals
     respond_to do |format|
-      format.html { redirect_to weekly_goals_url, notice: "Weekly goal was successfully destroyed." }
+      format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -68,9 +67,12 @@ class WeeklyGoalsController < ApplicationController
       @weekly_goal = WeeklyGoal.find(params[:id])
     end
 
+    def find_current_user
+      @user = User.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def weekly_goal_params
       params.require(:weekly_goal).permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
-      
     end
 end
