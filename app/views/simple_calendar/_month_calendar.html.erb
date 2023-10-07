@@ -2,9 +2,16 @@
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>  
+                <%= button_to "全削除","/weekly_goals/#{@user.id}" , { method: :delete,class: "btn btn-danger" ,data: { confirm: '本当に週間目標とタスクを全て削除しますか？' }} %>
+               
+            </div>
+        </div>
+    </div>
+</div>
+     
   </div>
-  
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,22 +20,23 @@
         <% end %>
       </tr>
     </thead>
+
     <tbody>
       <% date_range.each_slice(7) do |week| %>
         <tr>
           <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day)  do %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
-            <% end %>          
+            <% end %>
           <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-  </div>
-              
+
+
