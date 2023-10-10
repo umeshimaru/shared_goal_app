@@ -54,11 +54,14 @@ class WeeklyGoalsController < ApplicationController
 
   # DELETE /weekly_goals/1 or /weekly_goals/1.json
   def destroy
-    @user.weekly_goals
-    respond_to do |format|
-      format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully destroyed." }
-      format.json { head :no_content }
+    weekly_goals = @user.weekly_goals
+    weekly_goals.each do |weekly_goal|
+      weekly_goal.destroy
     end
+    respond_to do |format|
+        format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully destroyed." }
+        format.json { head :no_content }
+    end 
   end
 
   private

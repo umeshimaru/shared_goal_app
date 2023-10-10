@@ -26,10 +26,13 @@ section
        ul.dropdown-menu(aria-labelledby="dropdownMenu1")
          li
            a.weekly_goal[href="#" data-toggle="modal" data-target="#myModal" data-day=date] 週間目標
-           
-         li
-           a.task[href="#" data-toggle="modal" data-target="#add_task" data-day=date] タスク
- 
+         - if @weekly_goals.blank?
+
+         - else 
+          li
+            a.task[href="#" data-toggle="modal" data-target="#add_task" data-day=date] タスク
+         
+
     - events.each do |event|
       div
         = event.weekly_goal
