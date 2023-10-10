@@ -11,7 +11,8 @@ class MonthlyGoalsController < ApplicationController
     @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
     @events = @user.weekly_goals.includes(:tasks)
     @task = Task.new
-  
+    @weekly_goals = @user.weekly_goals
+
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json
