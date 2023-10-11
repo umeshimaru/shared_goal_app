@@ -34,22 +34,18 @@ section
          
 
     - events.each do |event|
-      div
-        = link_to event.weekly_goal , class: "weekly-goal"
-        = link_to "編集",             class: "weekly-goal-edit"
-        = link_to "削除",             class: "weekly-goal-destroy"
+      div.container
+        p.weekly_goal_link
+          = link_to event.weekly_goal ,      class: "weekly_goal"
+        p 
+          = link_to "編集",    '#'  ,        class: "weekly_goal_edit"
+        p 
+          = link_to "削除",    '#'  ,        class: "weekly_goal_destroy"
 
         - event.tasks.each do |task|
           div
             = task.task
         
-        
-    
-        
-
-     
-      
-   
               
 section.penalty
   h5 バディに差出すもの

@@ -3,17 +3,17 @@ import { checkAndCreateButton}        from "../components/shared";
 import { update_your_penalty}         from "../components/shared"; 
 import { cancelEdit}                  from "../components/shared"; 
 import { cancelPenaltyEdit}           from "../components/shared"; 
-import { changeHtmlToInputElement}    from "../components/shared"; 
+import { cancelWeeklyGoalEdit}        from "../components/shared"; 
 // import { displayNone}          from "../components/shared"; 
 
 
 
   $(document).on('turbolinks:load', function() {
     $('.edit_button').on('click', (e) => {
-      e.preventDefault();
-      let change_goal = $(".change_goal").text();
-      let input = $("<input>").val($(change_goal).text());
-      $(".change_goal").replaceWith(input);
+                                           e.preventDefault();
+                                           let change_goal = $(".change_goal").text();
+                                           let input = $("<input>").val($(change_goal).text());
+                                           $(".change_goal").replaceWith(input);
                                            checkAndCreateButton(".monthly_goal_update",'monthly_goal_update','.monthly_goal');
                                            
        $(document).on('click', function(e) {
@@ -67,11 +67,20 @@ import { changeHtmlToInputElement}    from "../components/shared";
 
     });
     
-    $('.weekly-goal-edit').on('click', (e) => {
-                                                changeHtmlToInputElement(e,".weekly-goal");
+    $('.weekly_goal_edit').on('click', (e) => {
+                                                e.preventDefault(); 
+                                                let change_weekly_goal = $(".weekly_goal_link").text();
+                                                let weekly_input = $("<input>").val($(change_weekly_goal).text()).addClass("weekly_input");
+                                                $('.weekly_goal_link').replaceWith(weekly_input);
+                                                checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container');
+                                                
 
-      
+$(document).on('click', function(e) {                                          
+                                      cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input);
+                                      });
       });
+
+
 
 
  

@@ -77,6 +77,14 @@ export function update_your_penalty(input) {
                                                     let input = $("<input>").val($(your_goal).text());
                                                     $(your_goal).replaceWith(input);
                                                  };
+
+export function cancelWeeklyGoalEdit(e,change_goal,input){
+                                                  
+                                                          if (!$(e.target).is('.weekly_goal_update,.weekly_goal_edit,weekly_input')) {
+                                                          let monthly_goal = $("<p>").text(change_goal).addClass("weekly_goal_link");
+                                                          input.replaceWith(monthly_goal);
+                                                          $('.weekly_goal_update').remove();
+                                                 };}
                                                 
                                                 
 
