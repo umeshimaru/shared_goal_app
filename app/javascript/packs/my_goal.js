@@ -1,27 +1,30 @@
-import { update_your_goal }    from "../components/shared"; 
-import { checkAndCreateButton} from "../components/shared"; 
-import { update_your_penalty}  from "../components/shared"; 
-import { cancelEdit}           from "../components/shared"; 
-import { cancelPenaltyEdit}    from "../components/shared"; 
+import { update_your_goal }           from "../components/shared"; 
+import { checkAndCreateButton}        from "../components/shared"; 
+import { update_your_penalty}         from "../components/shared"; 
+import { cancelEdit}                  from "../components/shared"; 
+import { cancelPenaltyEdit}           from "../components/shared"; 
+import { cancelWeeklyGoalEdit}        from "../components/shared"; 
 // import { displayNone}          from "../components/shared"; 
 
 
 
   $(document).on('turbolinks:load', function() {
-    $('.edit-button').on('click', (e) => {
-                                           e.preventDefault(); 
+    $('.edit_button').on('click', (e) => {
+                                           e.preventDefault();
                                            let change_goal = $(".change_goal").text();
-                                           let input = $("<input>").val($(".change_goal").text());
-                                           $('.change_goal').replaceWith(input);
+                                           let input = $("<input>").val($(change_goal).text());
+                                           $(".change_goal").replaceWith(input);
                                            checkAndCreateButton(".monthly_goal_update",'monthly_goal_update','.monthly_goal');
-
+                                           
+       $(document).on('click', function(e) {
+                                          
+                                            cancelEdit(e,change_goal,input);
+                                            });
       $('.monthly_goal_update').on('click', (e) => {
-                                                    e.preventDefault();
+                                               
                                                     update_your_goal('input');
                                                     });
-      $(document).on('click', function(e) {
-                                           cancelEdit(e,change_goal,input);
-                                          });
+      
                                           });
 
   $('.penalty_edit_button').on('click', (e) => {
@@ -64,6 +67,19 @@ import { cancelPenaltyEdit}    from "../components/shared";
 
     });
     
+    $('.weekly_goal_edit').on('click', (e) => {
+                                                e.preventDefault(); 
+                                                let change_weekly_goal = $(".weekly_goal_link").text();
+                                                let weekly_input = $("<input>").val($(change_weekly_goal).text()).addClass("weekly_input");
+                                                $('.weekly_goal_link').replaceWith(weekly_input);
+                                                checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container');
+                                                
+
+$(document).on('click', function(e) {                                          
+                                      cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input);
+                                      });
+      });
+
 
 
 

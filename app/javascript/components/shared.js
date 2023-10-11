@@ -58,7 +58,8 @@ export function update_your_penalty(input) {
                                         }
 
  export function cancelEdit(e,change_goal,input){
-                                                  if (!$(e.target).is('.monthly_goal_update,.edit-button,input')) {
+                                                  
+                                                  if (!$(e.target).is('.monthly_goal_update,.edit_button,input')) {
                                                   let monthly_goal = $("<p>").text(change_goal).addClass("change_goal");
                                                   input.replaceWith(monthly_goal);
                                                   $('.monthly_goal_update').remove();
@@ -70,6 +71,22 @@ export function update_your_penalty(input) {
                                                   penalty_input.replaceWith(penalty_name);
                                                   $('.penalty_name_update').remove();
                                                  };}
+ export function changeHtmlToInputElement(e,your_goal){
+                                                    e.preventDefault();
+                                                    let change_goal = $(your_goal).text();
+                                                    let input = $("<input>").val($(your_goal).text());
+                                                    $(your_goal).replaceWith(input);
+                                                 };
+
+export function cancelWeeklyGoalEdit(e,change_goal,input){
+                                                  
+                                                          if (!$(e.target).is('.weekly_goal_update,.weekly_goal_edit,weekly_input')) {
+                                                          let monthly_goal = $("<p>").text(change_goal).addClass("weekly_goal_link");
+                                                          input.replaceWith(monthly_goal);
+                                                          $('.weekly_goal_update').remove();
+                                                 };}
+                                                
+                                                
 
 //  export function displayNone(e){
 //                               if (!$(e.target).is('.penalty_name_update,.penalty_edit_button,.penalty_input')) {
