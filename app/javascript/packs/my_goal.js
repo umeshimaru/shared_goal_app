@@ -1,27 +1,30 @@
-import { update_your_goal }    from "../components/shared"; 
-import { checkAndCreateButton} from "../components/shared"; 
-import { update_your_penalty}  from "../components/shared"; 
-import { cancelEdit}           from "../components/shared"; 
-import { cancelPenaltyEdit}    from "../components/shared"; 
+import { update_your_goal }           from "../components/shared"; 
+import { checkAndCreateButton}        from "../components/shared"; 
+import { update_your_penalty}         from "../components/shared"; 
+import { cancelEdit}                  from "../components/shared"; 
+import { cancelPenaltyEdit}           from "../components/shared"; 
+import { changeHtmlToInputElement}    from "../components/shared"; 
 // import { displayNone}          from "../components/shared"; 
 
 
 
   $(document).on('turbolinks:load', function() {
-    $('.edit-button').on('click', (e) => {
-                                           e.preventDefault(); 
-                                           let change_goal = $(".change_goal").text();
-                                           let input = $("<input>").val($(".change_goal").text());
-                                           $('.change_goal').replaceWith(input);
+    $('.edit_button').on('click', (e) => {
+      e.preventDefault();
+      let change_goal = $(".change_goal").text();
+      let input = $("<input>").val($(change_goal).text());
+      $(".change_goal").replaceWith(input);
                                            checkAndCreateButton(".monthly_goal_update",'monthly_goal_update','.monthly_goal');
-
+                                           
+       $(document).on('click', function(e) {
+                                          
+                                            cancelEdit(e,change_goal,input);
+                                            });
       $('.monthly_goal_update').on('click', (e) => {
-                                                    e.preventDefault();
+                                               
                                                     update_your_goal('input');
                                                     });
-      $(document).on('click', function(e) {
-                                           cancelEdit(e,change_goal,input);
-                                          });
+      
                                           });
 
   $('.penalty_edit_button').on('click', (e) => {
@@ -64,7 +67,11 @@ import { cancelPenaltyEdit}    from "../components/shared";
 
     });
     
+    $('.weekly-goal-edit').on('click', (e) => {
+                                                changeHtmlToInputElement(e,".weekly-goal");
 
+      
+      });
 
 
  

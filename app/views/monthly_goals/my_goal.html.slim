@@ -5,7 +5,7 @@ section.monthly_goal
   p.change_goal
     = @monthly_goal.monthly_goal
   p
-    = link_to '編集', '#', class: 'edit-button'
+    = link_to '編集', '#', class: 'edit_button'
 
 section 
   h3 = "目標達成まであと#{@days_until_achievement.to_i}日"
@@ -35,7 +35,10 @@ section
 
     - events.each do |event|
       div
-        = event.weekly_goal
+        = link_to event.weekly_goal , class: "weekly-goal"
+        = link_to "編集",             class: "weekly-goal-edit"
+        = link_to "削除",             class: "weekly-goal-destroy"
+
         - event.tasks.each do |task|
           div
             = task.task
