@@ -1,6 +1,7 @@
 class WeeklyGoalsController < ApplicationController
-  before_action :set_weekly_goal,   only: %i[ show edit update  ]
-  before_action :find_current_user, only: %i[ create destroy  ]
+  before_action :set_weekly_goal,   only: %i[ show edit  ]
+  before_action :find_current_user, only: %i[ create destroy update ]
+  
 
   # GET /weekly_goals or /weekly_goals.json
   def index
@@ -39,12 +40,16 @@ class WeeklyGoalsController < ApplicationController
 
   end
 
+  # params[:id],params[:weekly_goal][:previous_weekly_goal],params[:weekly_goal][:start_time]
   # PATCH/PUT /weekly_goals/1 or /weekly_goals/1.json
   def update
+    @update_weekly_goal = WeeklyGoal.find_update_record(previous_weekly_goal,start_time,id)
+    byebug
+      
     respond_to do |format|
-      if @weekly_goal.update(weekly_goal_params)
-        format.html { redirect_to weekly_goal_url(@weekly_goal), notice: "Weekly goal was successfully updated." }
-        format.json {redirect_to weekly_goal_url(@weekly_goal) , status: :ok, location: @weekly_goal }
+      if @update_weekly_goal.update(weekly_goal_params)
+        format.html { redirect_to my_goal_monthly_goal_path(@weekly_goal), notice: "Weekly goal was successfully updated." }
+        format.js {redirect_to my_goal_monthly_goal_path(@weekly_goal) , status: :ok, location: @weekly_goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @weekly_goal.errors, status: :unprocessable_entity }
@@ -54,21 +59,45 @@ class WeeklyGoalsController < ApplicationController
 
   # DELETE /weekly_goals/1 or /weekly_goals/1.json
   def destroy
+    ActiveRecord::Base.transaction do
     weekly_goals = @user.weekly_goals
     weekly_goals.each do |weekly_goal|
-      weekly_goal.destroy
+      weekly_goal.destroy!
     end
+  
     respond_to do |format|
         format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully destroyed." }
         format.json { head :no_content }
     end 
   end
+rescue => e
+  # エラー処理
+  respond_to do |format|
+    format.html { redirect_to my_goal_monthly_goal_path(@user), notice: "削除できませんでした." }
+    format.json { render json: { error: e.message }, status: :unprocessable_entity }
+  end
+end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_weekly_goal
       @weekly_goal = WeeklyGoal.find(params[:id])
+     
     end
+
+    def previous_weekly_goal
+      params[:weekly_goal][:previous_weekly_goal]
+    end
+
+    def start_time
+      params[:weekly_goal][:start_time]
+    end
+
+    def id
+      params[:id]
+    end
+
+   
 
     def find_current_user
       @user = User.find(params[:id])
