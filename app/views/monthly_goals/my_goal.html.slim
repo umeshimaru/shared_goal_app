@@ -36,7 +36,7 @@ section
     - events.each do |event|
       div.container
         p.weekly_goal_link
-          = link_to event.weekly_goal ,      class: "weekly_goal"
+          = link_to event.weekly_goal ,  '#',class: "weekly_goal_display", data: { date: event.start_time.to_s, content: event.weekly_goal }
         p 
           = link_to "編集",    '#'  ,        class: "weekly_goal_edit"
         p 

@@ -40,6 +40,31 @@ export function update_your_penalty(input) {
             
                                               });
                                     }
+ export function update_your_weekly_goal(input,weekly_goal,start_time) {
+                                              const idNumber = 2;
+                                              let currentURL = location.href;
+                                              let path = new URL(currentURL).pathname;
+                                              let path_array = path.split('/');
+                                              let id = path_array[idNumber]
+                                              let inputValue = $(input).val();
+
+
+                                      $.ajax({
+                                        type: 'PATCH', 
+                                        url: `/weekly_goals/${id}`, 
+                                        data: { // サーバーへ送信するデータ
+                                                weekly_goal: { weekly_goal:            inputValue ,
+                                                              start_time:              start_time,previous_weekly_goal:    weekly_goal
+                                                            }
+                                              }
+                                              }).done(function() {
+            
+            
+                                              }).fail(function() {
+            
+                                              });
+                                    }
+
 
 
 
@@ -80,7 +105,7 @@ export function update_your_penalty(input) {
 
 export function cancelWeeklyGoalEdit(e,change_goal,input){
                                                   
-                                                          if (!$(e.target).is('.weekly_goal_update,.weekly_goal_edit,weekly_input')) {
+                                                          if (!$(e.target).is('.weekly_goal_update,.weekly_goal_edit,.weekly_input')) {
                                                           let monthly_goal = $("<p>").text(change_goal).addClass("weekly_goal_link");
                                                           input.replaceWith(monthly_goal);
                                                           $('.weekly_goal_update').remove();
