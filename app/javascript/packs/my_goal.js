@@ -5,12 +5,13 @@ import { cancelEdit}                  from "../components/shared";
 import { cancelPenaltyEdit}           from "../components/shared"; 
 import { cancelWeeklyGoalEdit}        from "../components/shared"; 
 import { update_your_weekly_goal}     from "../components/shared"; 
-import { getCustomData }              from "../components/shared"; 
 // import { displayNone}          from "../components/shared"; 
 
 
 
+
   $(document).on('turbolinks:load', function() {
+    
     $('.edit_button').on('click', (e) => {
                                            e.preventDefault();
                                            let change_goal = $(".change_goal").text();
@@ -68,17 +69,23 @@ import { getCustomData }              from "../components/shared";
     
 
     });
-    
-    $('.weekly_goal_edit').on('click', (e) => {
+
+    $( document).on('click', '[class^="weekly_goal_edit"]', (e) => {
+ 
                                                 e.preventDefault(); 
-                                                let custom_date_data = $('.weekly_goal_display').data('date');
-                                                let custom_content_data = $('.weekly_goal_display').data('content');
+                                               let weekly_goal_id = $(e.target).data("id");
+                                                console.log(weekly_goal_id);
+                                                
                                                
+                                                let custom_date_data = $('.weekly_goal_display_#{weekly_goal_id}').data('date');
+                                                console.log(custom_date_data);
+                                                let custom_content_data = $('.weekly_goal_display_#{weekly_goal_id}').data('content');
+                                                console.log(custom_content_data);
                                                
                                                 let change_weekly_goal = $(".weekly_goal_link").text();
                                                 let weekly_input = $("<input>").val($(change_weekly_goal).text()).addClass("weekly_input");
                                                 $('.weekly_goal_link').replaceWith(weekly_input);
-                                                checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container');
+                                                checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container'); 
 
                                                 
 
@@ -101,21 +108,6 @@ $('.weekly_goal_update').on('click', (e) => {
 
 
 
-// let element = $(e.target);
-// if (!element.is(".monthly_goal_update")) {
-//   $("monthly_goal_update").remove();
-//   $('input').replaceWith(".change_goal");
-
-
-// $(document).on('click', (e) => {
-//   let target = $(e.target)
-//   if (target.is(".monthly_goal_update")){
-//     console.log("更新")
-
-//   }else{
-//     console.log("更新ボタン以外")
-//   }  
-// });
 
 
 
