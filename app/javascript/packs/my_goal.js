@@ -73,24 +73,29 @@ import { update_your_weekly_goal}     from "../components/shared";
     $( document).on('click', '[class^="weekly_goal_edit"]', (e) => {
  
                                                 e.preventDefault(); 
+                                                // 編集ボタンのカスタムデータ属性取得
                                                let weekly_goal_id = $(e.target).data("id");
-                                                console.log(weekly_goal_id);
+                                                
+                                                
+                                              // 週間目標達成日取得
+                                                let custom_date_data = $(".weekly_goal_display_"+weekly_goal_id).data("date");
+                                                
+                                                // 週間目標取得
+                                                let custom_content_data = $(".weekly_goal_display_" + weekly_goal_id).data('content');
                                                 
                                                
-                                                let custom_date_data = $('.weekly_goal_display_#{weekly_goal_id}').data('date');
-                                                console.log(custom_date_data);
-                                                let custom_content_data = $('.weekly_goal_display_#{weekly_goal_id}').data('content');
-                                                console.log(custom_content_data);
-                                               
-                                                let change_weekly_goal = $(".weekly_goal_link").text();
-                                                let weekly_input = $("<input>").val($(change_weekly_goal).text()).addClass("weekly_input");
-                                                $('.weekly_goal_link').replaceWith(weekly_input);
+                                                let change_weekly_goal = $(".weekly_goal_display_" + weekly_goal_id).text();
+                                                console.log(change_weekly_goal);
+                                                
+                                                let weekly_input = $("<input>").addClass("weekly_input");
+                                                
+                                                $(".weekly_goal_link_" + weekly_goal_id).replaceWith(weekly_input);
                                                 checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container'); 
 
                                                 
 
 $(document).on('click', function(e) {                                          
-                                      cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input);
+                                      cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input,weekly_goal_id);
                                       });
 $('.weekly_goal_update').on('click', (e) => {
                                               e.preventDefault();
