@@ -68,7 +68,8 @@ export function update_your_penalty(input) {
 
 
 
- export function checkAndCreateButton(updateButton,cssClass,section){
+ export function checkAndCreateButton(updateButton,cssClass,parentElement){
+  
                                         if ($(updateButton).length) {
                                           return;
                                         } else {
@@ -77,7 +78,8 @@ export function update_your_penalty(input) {
                                           class: cssClass
 
                                           })
-                                          $(section).append(button);
+                                          $(parentElement).append(button);
+                                          
     
                                         };
                                         }
@@ -104,13 +106,30 @@ export function update_your_penalty(input) {
                                                  };
 
 export function cancelWeeklyGoalEdit(e,change_goal,input,weekly_goal_id){
-                                                  
-                                                          if (!$(e.target).is('.weekly_goal_update',".weekly_goal_edit"+ weekly_goal_id,'.weekly_input')) {
+ console.log(e.target);
+                                                          if (!$(e.target).is('.weekly_goal_update',".weekly_goal_edit_"+ weekly_goal_id,'.weekly_input')) {
+                                                            
                                                           let weekly_goal = $("<p>").text(change_goal).addClass("weekly_goal_link_"+ weekly_goal_id);
                                                           input.replaceWith(weekly_goal);
                                                           $('.weekly_goal_update').remove();
+                                                         
                                                  };}
                                                 
+                                                 
+                                                 
+export function checkAndCreateUpdateButton(updateButton,cssClass,weekly_goal_id){
+                                                                                if ($(updateButton).length) {
+                                                                                  return;
+                                                                                } else {
+                                                                                  const button = $("<button>", {
+                                                                                  text:  '更新',
+                                                                                  class: cssClass
+
+                                                                                  });
+                                                                                  $(".weekly_goal_destroy_"+ weekly_goal_id).append(button);}
+                                                                                 
+                                                                                
+                                                                                };
                                                 
 
 //  export function displayNone(e){
