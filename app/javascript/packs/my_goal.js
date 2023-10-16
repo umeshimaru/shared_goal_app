@@ -5,6 +5,7 @@ import { cancelEdit}                  from "../components/shared";
 import { cancelPenaltyEdit}           from "../components/shared"; 
 import { cancelWeeklyGoalEdit}        from "../components/shared"; 
 import { update_your_weekly_goal}     from "../components/shared"; 
+import { checkAndCreateUpdateButton}  from "../components/shared"; 
 // import { displayNone}          from "../components/shared"; 
 
 
@@ -70,7 +71,7 @@ import { update_your_weekly_goal}     from "../components/shared";
 
     });
 
-    $( document).on('click', '[class^="weekly_goal_edit"]', (e) => {
+    $( document).on('click', '[class^="weekly_goal_edit_"]', (e) => {
  
                                                 e.preventDefault(); 
                                                 // 編集ボタンのカスタムデータ属性取得
@@ -85,17 +86,19 @@ import { update_your_weekly_goal}     from "../components/shared";
                                                 
                                                
                                                 let change_weekly_goal = $(".weekly_goal_display_" + weekly_goal_id).text();
-                                                console.log(change_weekly_goal);
+                                                
                                                 
                                                 let weekly_input = $("<input>").addClass("weekly_input");
                                                 
                                                 $(".weekly_goal_link_" + weekly_goal_id).replaceWith(weekly_input);
-                                                checkAndCreateButton(".weekly_goal_update",'weekly_goal_update','.container'); 
+                                                checkAndCreateUpdateButton(".weekly_goal_update",'weekly_goal_update',weekly_goal_id); 
+                                                
 
                                                 
 
 $(document).on('click', function(e) {                                          
                                       cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input,weekly_goal_id);
+                                      console.log("ボタンを削除します");
                                       });
 $('.weekly_goal_update').on('click', (e) => {
                                               e.preventDefault();

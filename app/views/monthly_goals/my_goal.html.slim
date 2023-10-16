@@ -38,9 +38,9 @@ section
         p[class = "weekly_goal_link_#{weekly_goal.id}"]
           = link_to weekly_goal.weekly_goal ,  '#',class: "weekly_goal_display_#{weekly_goal.id}", data: { date: weekly_goal.start_time.to_s, content: weekly_goal.weekly_goal }
         p 
-          = link_to "編集",    '#'  ,        class: "weekly_goal_edit",data: { id: weekly_goal.id }
+          = link_to "編集",    '#'  ,        class: "weekly_goal_edit_#{weekly_goal.id}",data: { id: weekly_goal.id }
         p 
-          = link_to "削除",    '#'  ,        class: "weekly_goal_destroy"
+          = link_to "削除",    '#'  ,        class: "weekly_goal_destroy_#{weekly_goal.id}"
 
         - weekly_goal.tasks.each do |task|
           div
