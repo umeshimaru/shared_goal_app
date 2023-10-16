@@ -44,7 +44,7 @@ class WeeklyGoalsController < ApplicationController
   # PATCH/PUT /weekly_goals/1 or /weekly_goals/1.json
   def update
     @update_weekly_goal = WeeklyGoal.find_update_record(previous_weekly_goal,start_time,id)
-    byebug
+    
       
     respond_to do |format|
       if @update_weekly_goal.update(weekly_goal_params)
