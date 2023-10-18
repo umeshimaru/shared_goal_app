@@ -90,9 +90,11 @@ export function update_your_penalty(input) {
                                                   let monthly_goal = $("<p>").text(change_goal).addClass("change_goal");
                                                   input.replaceWith(monthly_goal);
                                                   $('.monthly_goal_update').remove();
+                                                  
                                                  };}
 
  export function cancelPenaltyEdit(e,change_penalty_name,penalty_input){
+
                                                   if (!$(e.target).is('.penalty_name_update,.penalty_edit_button,.penalty_input')) {
                                                   let penalty_name = $("<p>").text(change_penalty_name).addClass("change_penalty_name");
                                                   penalty_input.replaceWith(penalty_name);
@@ -106,13 +108,15 @@ export function update_your_penalty(input) {
                                                  };
 
 export function cancelWeeklyGoalEdit(e,change_goal,input,weekly_goal_id){
- console.log(e.target);
+
                                                           if (!$(e.target).is('.weekly_goal_update',".weekly_goal_edit_"+ weekly_goal_id,'.weekly_input')) {
-                                                            
-                                                          let weekly_goal = $("<p>").text(change_goal).addClass("weekly_goal_link_"+ weekly_goal_id);
+                                                          const p = $("p").addClass("weekly_goal_link_"+ weekly_goal_id);
+                                                          let weekly_goal = $("<a>").text(change_goal).addClass("weekly_goal_link_"+ weekly_goal_id);
+                                                        
                                                           input.replaceWith(weekly_goal);
                                                           $('.weekly_goal_update').remove();
-                                                         
+                                                          console.log("ボタン削除しました")
+                                                          
                                                  };}
                                                 
                                                  
