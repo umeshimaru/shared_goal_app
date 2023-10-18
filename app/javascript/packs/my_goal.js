@@ -15,40 +15,46 @@ import { checkAndCreateUpdateButton}  from "../components/shared";
     
     $('.edit_button').on('click', (e) => {
                                            e.preventDefault();
+                                           
                                            let change_goal = $(".change_goal").text();
                                            let input = $("<input>").val($(change_goal).text());
                                            $(".change_goal").replaceWith(input);
                                            checkAndCreateButton(".monthly_goal_update",'monthly_goal_update','.monthly_goal');
                                            
        $(document).on('click', function(e) {
-                                          
+                                            
                                             cancelEdit(e,change_goal,input);
                                             });
       $('.monthly_goal_update').on('click', (e) => {
                                                     e.preventDefault();
+                                                    ;
                                                     update_your_goal('input');
                                                     });
       
                                           });
 
   $('.penalty_edit_button').on('click', (e) => {
+    
                                                 e.preventDefault(); 
+                                                
                                                 let change_penalty_name = $(".change_penalty_name").text();
                                                 let penalty_input = $("<input>").val($(".change_penalty_name").text()).addClass("penalty_input");
                                                 $('.change_penalty_name').replaceWith(penalty_input);
                                                 checkAndCreateButton(".penalty_name_update",'penalty_name_update','.penalty');
 
       $(document).on('click', function(e) {
+                                          
                                           cancelPenaltyEdit(e,change_penalty_name,penalty_input);
                                           });
       $('.penalty_name_update').on('click', (e) => {
                                                     e.preventDefault();
+                                                    
                                                     update_your_penalty('.penalty_input');
                                                   });
     });
       $('.penalty_image_edit').on('click', (e) => {
-        e.preventDefault();
-        $('#file-upload-form').toggle();
+                                                    e.preventDefault();
+                                                    $('#file-upload-form').toggle();
       
                                                      
                                                  });
@@ -74,6 +80,7 @@ import { checkAndCreateUpdateButton}  from "../components/shared";
     $( document).on('click', '[class^="weekly_goal_edit_"]', (e) => {
  
                                                 e.preventDefault(); 
+                                                e.stopPropagation();
                                                 // 編集ボタンのカスタムデータ属性取得
                                                let weekly_goal_id = $(e.target).data("id");
                                                 
@@ -90,18 +97,21 @@ import { checkAndCreateUpdateButton}  from "../components/shared";
                                                 
                                                 let weekly_input = $("<input>").addClass("weekly_input");
                                                 
-                                                $(".weekly_goal_link_" + weekly_goal_id).replaceWith(weekly_input);
+                                                $(".weekly_goal_display_" + weekly_goal_id).replaceWith(weekly_input);
                                                 checkAndCreateUpdateButton(".weekly_goal_update",'weekly_goal_update',weekly_goal_id); 
                                                 
 
-                                                
+                                            
 
-$(document).on('click', function(e) {                                          
+$(document).on('click', function(e) {      
+                                      e.stopPropagation();
+                                      console.log(e)
                                       cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input,weekly_goal_id);
-                                      console.log("ボタンを削除します");
+                                      
                                       });
 $('.weekly_goal_update').on('click', (e) => {
                                               e.preventDefault();
+                                              e.stopPropagation();
                                               update_your_weekly_goal('input[class = "weekly_input"]',custom_content_data,custom_date_data);
                                         });
 
