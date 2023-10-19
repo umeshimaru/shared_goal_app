@@ -42,7 +42,7 @@ section
           = link_to "編集",    '#'  ,        class: "weekly_goal_edit_#{weekly_goal.id}",data: { id: weekly_goal.id }
         p 
           = link_to "削除",    '#'  ,        class: "weekly_goal_destroy_#{weekly_goal.id}"
-
+        
         - weekly_goal.tasks.each do |task|
           div
             = weekly_goal.task

@@ -29,7 +29,7 @@ class WeeklyGoalsController < ApplicationController
     respond_to do |format|
       if @weekly_goal.save
         format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully created." }
-        format.js { redirect_to my_goal_monthly_goal_path(@user) , status: :created }
+        format.js {   redirect_to my_goal_monthly_goal_path(@user) , status: :created }
       else
         # format.html { redirect_to  my_goal_monthly_goal_path(@user) , status: :unprocessable_entity }
         format.js { render :errors, status: :unprocessable_entity }
