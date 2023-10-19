@@ -91,29 +91,32 @@ import { checkAndCreateUpdateButton}  from "../components/shared";
                                                 // 週間目標取得
                                                 let custom_content_data = $(".weekly_goal_display_" + weekly_goal_id).data('content');
                                                 
-                                               
+                                              //  変更前の週間目標
                                                 let change_weekly_goal = $(".weekly_goal_display_" + weekly_goal_id).text();
                                                 
                                                 
                                                 let weekly_input = $("<input>").addClass("weekly_input");
+
                                                 
                                                 $(".weekly_goal_display_" + weekly_goal_id).replaceWith(weekly_input);
+                                                
                                                 checkAndCreateUpdateButton(".weekly_goal_update",'weekly_goal_update',weekly_goal_id); 
                                                 
 
                                             
 
 $(document).on('click', function(e) {      
+                                      e.preventDefault(); 
                                       e.stopPropagation();
-                                      console.log(e)
+                                    
                                       cancelWeeklyGoalEdit(e,change_weekly_goal,weekly_input,weekly_goal_id);
                                       
                                       });
-$('.weekly_goal_update').on('click', (e) => {
-                                              e.preventDefault();
-                                              e.stopPropagation();
-                                              update_your_weekly_goal('input[class = "weekly_input"]',custom_content_data,custom_date_data);
-                                        });
+// $('.weekly_goal_update').on('click', (e) => {
+//                                               e.preventDefault();
+//                                               e.stopPropagation();
+//                                               update_your_weekly_goal('input[class = "weekly_input"]',custom_content_data,custom_date_data);
+//                                         });
 
       });
 

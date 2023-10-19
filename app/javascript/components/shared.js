@@ -85,12 +85,12 @@ export function update_your_penalty(input) {
                                         }
 
  export function cancelEdit(e,change_goal,input){
-                                                  
+                                                
                                                   if (!$(e.target).is('.monthly_goal_update,.edit_button,input')) {
                                                   let monthly_goal = $("<p>").text(change_goal).addClass("change_goal");
                                                   input.replaceWith(monthly_goal);
                                                   $('.monthly_goal_update').remove();
-                                                  
+                                           
                                                  };}
 
  export function cancelPenaltyEdit(e,change_penalty_name,penalty_input){
@@ -108,9 +108,8 @@ export function update_your_penalty(input) {
                                                  };
 
 export function cancelWeeklyGoalEdit(e,change_goal,input,weekly_goal_id){
-
+                                                         
                                                           if (!$(e.target).is('.weekly_goal_update',".weekly_goal_edit_"+ weekly_goal_id,'.weekly_input')) {
-                                                          const p = $("p").addClass("weekly_goal_link_"+ weekly_goal_id);
                                                           let weekly_goal = $("<a>").text(change_goal).addClass("weekly_goal_link_"+ weekly_goal_id);
                                                         
                                                           input.replaceWith(weekly_goal);
