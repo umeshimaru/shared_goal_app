@@ -10,7 +10,7 @@ class MonthlyGoalsController < ApplicationController
     @monthly_goal = @user.monthly_goal
     @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
     @events = @user.weekly_goals.includes(:tasks)
-    byebug
+
     @task = Task.new
     @weekly_goals = @user.weekly_goals
 
