@@ -105,6 +105,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def weekly_goal_params
+      byebug
       params.require(:weekly_goal).permit(:weekly_goal, :start_time, :user_id, :monthly_goal_id)
     end
 end
