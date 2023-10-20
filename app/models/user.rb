@@ -12,6 +12,17 @@ class User < ApplicationRecord
          validates :name , presence:true,  uniqueness: true
          
 
+def collect_user_events(user_weekly_goals)
+  events = []
+  user_weekly_goals.each do |weekly_goal|
+    events.push(weekly_goal)
+  weekly_goal.tasks.each do |task|
+    events.push(task)
+    end
+  end 
+  events
+end 
+
 
 end 
 
