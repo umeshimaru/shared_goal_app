@@ -12,9 +12,6 @@ class MonthlyGoalsController < ApplicationController
     @weekly_goals = @user.weekly_goals
     @events = @user.collect_user_events(@weekly_goals)
     @task = Task.new
-    
-    
-
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json
