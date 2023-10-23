@@ -45,7 +45,7 @@ section
             = link_to "削除",    '#'  ,        class: "weekly_goal_destroy_#{event.id}"
       - else 
         div
-          = event.task
+          = link_to event.task,event
         
               
 section.penalty
