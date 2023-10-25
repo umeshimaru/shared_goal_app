@@ -1,5 +1,7 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
+ 
+ 
 
   def index
 
@@ -12,6 +14,7 @@ class MonthlyGoalsController < ApplicationController
     @weekly_goals = @user.weekly_goals
     @events = @user.collect_user_events(@weekly_goals)
     @task = Task.new
+
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json
@@ -68,6 +71,9 @@ class MonthlyGoalsController < ApplicationController
     end
   end
 
+
+  
+
  
 
   private
@@ -75,6 +81,8 @@ class MonthlyGoalsController < ApplicationController
     def set_monthly_goal
       @monthly_goal = MonthlyGoal.find(params[:id])
     end
+
+   
 
     # Only allow a list of trusted parameters through.
     def monthly_goal_params
