@@ -11,6 +11,5 @@ class ApplicationController < ActionController::Base
   def set_q
     @q = User.ransack(params[:q])
     @results = @q.result
-    
   end
 end

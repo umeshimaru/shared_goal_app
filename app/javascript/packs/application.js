@@ -17,6 +17,7 @@ ActiveStorage.start()
 
 import  "../components/shared"
 import "./my_goal"
+import "./_header"
 
 
 
