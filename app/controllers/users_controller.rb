@@ -23,9 +23,18 @@ class UsersController < ApplicationController
     
   end
 
-  def search 
+  def search
+
+  
+    @q = User.ransack(params[:query])
+    @users = @q.result(distinct: true)
+    respond_to do |format|
+      format.json { render json: @users }
+    end
     
-  end
+end 
+    
+  
 
   
 

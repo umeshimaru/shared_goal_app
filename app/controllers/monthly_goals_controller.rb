@@ -1,5 +1,6 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
+  before_action :set_q,            only: %i[ my_goal search ]
  
  
 
@@ -14,6 +15,7 @@ class MonthlyGoalsController < ApplicationController
     @weekly_goals = @user.weekly_goals
     @events = @user.collect_user_events(@weekly_goals)
     @task = Task.new
+    
 
   end
 
@@ -72,6 +74,8 @@ class MonthlyGoalsController < ApplicationController
   end
 
 
+
+
   
 
  
@@ -127,6 +131,11 @@ class MonthlyGoalsController < ApplicationController
         elsif params_include_only_image?
            only_penalty_image_params
         end
+    end
+
+    def set_q
+      @q = User.ransack(params[:query])
+      @results = @q.result
     end
 
 end
