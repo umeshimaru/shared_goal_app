@@ -1,6 +1,6 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
-  before_action :set_q,            only: %i[ my_goal search ]
+  before_action :set_q,            only: %i[ my_goal ]
  
  
 
@@ -134,7 +134,7 @@ class MonthlyGoalsController < ApplicationController
     end
 
     def set_q
-      @q = User.ransack(params[:query])
+      @q = User.ransack(params[:q])
       @results = @q.result
     end
 
