@@ -14,7 +14,8 @@ class User < ApplicationRecord
 
          validates :name , presence:true,  uniqueness: true
 
-        
+
+ scope :find_others, -> (user_input){ where("name LIKE ?", "#{user_input}%") }
          
 
 def collect_user_events(user_weekly_goals)
@@ -27,6 +28,8 @@ def collect_user_events(user_weekly_goals)
   end 
   events
 end 
+
+
 
 
 def self.ransackable_attributes(auth_object = nil)
