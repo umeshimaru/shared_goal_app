@@ -15,10 +15,15 @@ $(document).on('turbolinks:load', ()=> {
                                                           let userLink = $('<a>').text(userName).addClass("potentialUser");
                                                           // 複数要素が存在しているかつその要素のtextとuserNameが同名か確認
 
-                                                            if ($('.potentialUser').length <= 1 && $('.potentialUser').text() == userName ){
-                                                                
+                                                            if ($('.potentialUser').length ){
+                                                                $('.potentialUser').each(()=>{
+                                                                  console.log($(this).text())
+                                                              })
 
-                                                              $('ul').append(userLink);
+                                                              
+                                                              }else{
+                                                                $('ul').append(userLink);
+
                                                               }
 
                                                             

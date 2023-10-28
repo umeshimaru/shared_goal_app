@@ -54,6 +54,7 @@ group :development, :test do
   gem 'pry-rails' 
   gem 'rails-i18n'
   gem 'database_cleaner'
+  gem 'faker'
 
 
 
