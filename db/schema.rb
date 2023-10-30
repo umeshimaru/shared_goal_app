@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_28_145303) do
+ActiveRecord::Schema.define(version: 2023_10_30_055843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2023_09_28_145303) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_monthly_goals_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "reciever_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sender_id", "reciever_id"], name: "index_relationships_on_sender_id_and_reciever_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
