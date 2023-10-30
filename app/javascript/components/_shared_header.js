@@ -11,8 +11,9 @@ $.ajax({
 }).done(function(data){
   let searchResults = []
     $.each(data,(index)=>{
+      let userId = data[index]['id'];
       let userName = (data[index]['name'])
-      let userLink = $('<a>').text(userName).addClass("potentialUser");
+      let userLink = $('<a>').text(userName).addClass("potentialUser").attr('href','/relationships/'+userId+ '/new');
       searchResults.push(userLink)
       
     }); 
