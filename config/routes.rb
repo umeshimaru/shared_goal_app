@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'relationships/:id/new', to:'relationships#new'
+  get 'relationships/create'
+  get 'relationships/destroy'
   resources :weekly_goals
   resources :tasks
   resources :monthly_goals do 
