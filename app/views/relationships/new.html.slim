@@ -1,1 +1,8 @@
-= @friend_user.name
+h1 目標共有申請依頼
+
+
+
+h2 = "#{@friend_user.name} さんと目標を共有しますか？"
+
+= button_to "いいえ",  my_goal_monthly_goal_path(@user), method: :get
+= button_to "はい",    method: :get
