@@ -1,9 +1,9 @@
 header
   nav
     ul
-      li= link_to 'マイページ'  , '#'
-      li= link_to 'ログアウト  ', '#'
-      li= link_to 'マイページ', '#'
+      li= link_to 'マイページ'  ,     '#'
+      li= link_to 'ログアウト  ',     '#'
+      li= link_to 'フレンド申請状況', requests_status_path(@user)
       -if yield :title == "マイゴール"
       = search_form_for @q , url: url_for(controller: 'users', action: 'search') do |f|
         .search
