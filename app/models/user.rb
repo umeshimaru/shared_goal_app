@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one  :monthly_goal
   has_many :weekly_goals, through: :monthly_goal
-  has_one  :send_relationships,   class_name:  "Relationship",
+  has_one  :sender_relationships, class_name:  "Relationship",
                                   foreign_key: "sender_id",
                                   dependent:   :destroy
 
