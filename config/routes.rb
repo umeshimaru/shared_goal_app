@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   
   get 'relationships/:id/new',             to:'relationships#new'
   get 'relationships/:id/requests_status', to:'relationships#requests_status',as: :requests_status
-  get 'relationships/create'
-  get 'relationships/destroy'
+  post 'relationships/:id/create',         to:'relationships#create',as: :create_relationships
+  get  'relationships/destroy'
   resources :weekly_goals
   resources :tasks
   resources :monthly_goals do 

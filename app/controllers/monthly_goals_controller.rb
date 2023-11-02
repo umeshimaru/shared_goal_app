@@ -1,6 +1,6 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
-  before_action :set_q,            only: %i[ my_goal ]
+  before_action :set_q,            only: %i[ my_goal new]
  
  
 
@@ -26,6 +26,7 @@ class MonthlyGoalsController < ApplicationController
   # GET /monthly_goals/new
   def new
     @monthly_goal = MonthlyGoal.new
+    @user = current_user
   end
 
   # GET /monthly_goals/1/edit
@@ -34,6 +35,7 @@ class MonthlyGoalsController < ApplicationController
 
   # POST /monthly_goals or /monthly_goals.json
   def create
+    
     @current_user = current_user
     @monthly_goal = @current_user.build_monthly_goal(monthly_goal_params)
 
@@ -91,9 +93,9 @@ class MonthlyGoalsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def monthly_goal_params
       params.require(:monthly_goal).permit(:monthly_goal, :goal_achieved_at, :penalty_name, :image)
-    end
+    end       
 
-    def only_monthly_goal_params
+      def only_monthly_goal_params
       params.require(:monthly_goal).permit(:monthly_goal)
     end
 

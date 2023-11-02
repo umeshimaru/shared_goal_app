@@ -7,6 +7,5 @@ class ApplicationController < ActionController::Base
     my_goal_monthly_goal_path(resource)
   end
   
-
-
+ 
 end
