@@ -4,19 +4,22 @@ class RelationshipsController < ApplicationController
   def new
     @user = current_user
     @relationship = Relationship.new
+    #ここではいかいいえの表示を調整する。senderかrecieverだったらはいを非表示falseだったら表示
   end
 
   def create
-    
+    #ここbuildメソッドに書きなおす。理由もし同時に
     current_user.create_sender_relationships(relationship_params)
-
   end
 
   def destroy   
   end
 
   def requests_status
-    @user = User.find(params[:id])
+  
+   byebug
+    
+    #ここに記載する記載する(senderかrecieverかのデータ取得)、そのデータから
   end
 
 
