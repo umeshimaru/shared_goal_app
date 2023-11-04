@@ -7,10 +7,7 @@ class Relationship < ApplicationRecord
 
 
   def sender_or_reciever?
-    @sender    = Relationship.find_by(sender_id:   current_user.id)
-    @reciever  = Relationship.find_by(reciever_id: current_user.id)
-    
-   
+
   end
 
 
