@@ -1,4 +1,5 @@
 = provide(:title, "マイゴール") 
+= render 'layouts/header'
 h1 =  "#{@user.name}さんの目標"
 
 section.monthly_goal
@@ -71,4 +72,4 @@ section.penalty
   
 
 = link_to "New Monthly goal", new_monthly_goal_path
-= link_to "ログアウト", destroy_user_session_path, method: :delete
+= link_to "ログアウト",  logout_path, method: :delete

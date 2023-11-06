@@ -16,11 +16,12 @@ class RelationshipsController < ApplicationController
   end
 
   def requests_status
-  
-   byebug
+    @user = current_user
+   
     
     #ここに記載する記載する(senderかrecieverかのデータ取得)、そのデータから
   end
+
 
 
 
