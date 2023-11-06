@@ -18,14 +18,19 @@ Rails.application.routes.draw do
   end
 
 
-   
+  #  deviseが用意しているデフォルトのコントローラーを使わず自分の環境のusersディレクトリは配下のコントローラーを使えというメソッド
   devise_for :users,  controllers: {
     registrations:  'users/registrations',
     confirmations:  'users/confirmations',
-  }
+    sessions:      'users/sessions',
+     }
+  
+     #↓は↑のusersディレクトリは配下のコントローラーにつなげるようにルーティングを作成するメソッド
   devise_scope :user do
     get '/confirmation_email', to: 'users/confirmations#check_email'
     get '/monthly_goals/new',  to: 'users/monthly_goals#new'
+    delete '/logout',          to: 'users/sessions#destroy'
+    get '/sign_up',            to: 'users/sessions#new'  
   end
 
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
