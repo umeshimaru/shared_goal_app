@@ -30,9 +30,8 @@ class UsersController < ApplicationController
       format.html { render :index}
     end
 
-    
 end 
-    
+
   private 
 
   def set_q
