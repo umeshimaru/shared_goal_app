@@ -1,4 +1,4 @@
-class RelationshipsController < ApplicationController
+sclass RelationshipsController < ApplicationController
   before_action :set_q,       only: %i[new create requests_status]
   before_action :friend_user, only: %i[new create ]
   def new
