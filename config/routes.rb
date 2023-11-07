@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/monthly_goals/new',  to: 'users/monthly_goals#new'
     delete '/logout',          to: 'users/sessions#destroy'
     get '/sign_up',            to: 'users/sessions#new'  
+    get '/sing_up_account',    to: 'users/registrations#new'  
   end
 
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
