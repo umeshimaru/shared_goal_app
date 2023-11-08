@@ -26,14 +26,15 @@ Rails.application.routes.draw do
      }
   
      #↓は↑のusersディレクトリは配下のコントローラーにつなげるようにルーティングを作成するメソッド
-  devise_scope :user do
-    get '/confirmation_email', to: 'users/confirmations#check_email'
-    get '/monthly_goals/new',  to: 'users/monthly_goals#new'
-    delete '/logout',          to: 'users/sessions#destroy'
-    get '/sign_up',            to: 'users/sessions#new'  
-    get '/sing_up_account',    to: 'users/registrations#new'  
-  end
-
+     devise_scope :user do
+      get '/confirmation_email', to: 'users/confirmations#check_email'
+      get '/monthly_goals/new',  to: 'users/monthly_goals#new'
+      delete '/logout',          to: 'users/sessions#destroy'
+      get '/sign_up',            to: 'users/sessions#new'  
+      get '/sign_up_account',    to: 'users/registrations#new'  
+      post 'register',           to: 'users/registrations#create'  
+    end
+  
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
 
  
