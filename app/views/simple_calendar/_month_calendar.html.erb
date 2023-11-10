@@ -3,7 +3,7 @@
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>  
-                <%= button_to "全削除","/weekly_goals/#{@user.id}" , { method: :delete,class: "btn btn-danger" ,data: { confirm: '本当に週間目標とタスクを全て削除しますか？' }} %>
+                <%= button_to "全削除","/weekly_goals/#{@current_user.id}" , { method: :delete,class: "btn btn-danger" ,data: { confirm: '本当に週間目標とタスクを全て削除しますか？' }} %>
                
             </div>
         </div>
