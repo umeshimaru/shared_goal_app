@@ -12,7 +12,7 @@
           = f.text_field :weekly_goal, class: "form-control"
           = f.hidden_field :start_time,  id: "day" , class: "form-control"
           = f.hidden_field :monthly_goal_id, value: @monthly_goal.user_id, class: "form-control"
-          = f.hidden_field :user_id, value: @user.id, class: "form-control"
+          = f.hidden_field :user_id, value: current_user.id, class: "form-control"
           .modal-footer
             = button_to "閉じる", "#", type: "button", class: "btn btn-default", data: { toggle: "modal", target: "#myModal" }
             = f.submit "登録", class: "btn btn-primary"

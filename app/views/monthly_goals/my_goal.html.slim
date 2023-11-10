@@ -1,6 +1,6 @@
 = provide(:title, "マイゴール") 
 = render 'layouts/header'
-h1 =  "#{@user.name}さんの目標"
+h1 =  "#{@current_user.name}さんの目標"
 
 section.monthly_goal
   h2  = "あなたの#{@monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"

@@ -11,11 +11,7 @@ Rails.application.routes.draw do
       get 'my_goal'
     end
   end
-  resources :users do
-    collection do
-      get 'search' => 'users#search'
-    end
-  end
+
 
 
   #  deviseが用意しているデフォルトのコントローラーを使わず自分の環境のusersディレクトリは配下のコントローラーを使えというメソッド
@@ -35,6 +31,12 @@ Rails.application.routes.draw do
       post 'register',           to: 'users/registrations#create'  
     end
   
+  resources :users do
+    collection do
+      get 'search' => 'users#search'
+    end
+  end
+
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
 
  

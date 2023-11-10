@@ -9,14 +9,13 @@ class MonthlyGoalsController < ApplicationController
   end
   # GET /monthly_goals or /monthly_goals.json
   def my_goal
-    @user = User.find(params[:id])
-    @monthly_goal = @user.monthly_goal
-    @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
-    @weekly_goals = @user.weekly_goals
-    @events = @user.collect_user_events(@weekly_goals)
-    @task = Task.new
-    
 
+    @currrent_user = current_user
+    @monthly_goal = @current_user.monthly_goal
+    @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
+    @weekly_goals = @current_user.weekly_goals
+    @events = @current_user.collect_user_events(@weekly_goals)
+    @task = Task.new
   end
 
   # GET /monthly_goals/1 or /monthly_goals/1.json
@@ -27,6 +26,7 @@ class MonthlyGoalsController < ApplicationController
   def new
     @monthly_goal = MonthlyGoal.new
     @user = current_user
+    
   end
 
   # GET /monthly_goals/1/edit
@@ -38,7 +38,6 @@ class MonthlyGoalsController < ApplicationController
     
     @current_user = current_user
     @monthly_goal = @current_user.build_monthly_goal(monthly_goal_params)
-
     respond_to do |format|
       if @monthly_goal.save
         format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal), notice: "Monthly goal was successfully created." }
