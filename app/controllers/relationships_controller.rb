@@ -9,7 +9,14 @@ class RelationshipsController < ApplicationController
 
   def create
     #ここbuildメソッドに書きなおす。理由もし同時に
-    current_user.create_sender_relationships(relationship_params)
+  
+   friendship = Relationship.new(relationship_params)
+   if friendship.save
+    redirect_to  my_goal_monthly_goal_path(current_user)
+   else
+    
+    
+   end
   end
 
   def destroy   

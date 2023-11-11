@@ -19,8 +19,11 @@ $.ajax({
     }); 
     let searchResultsFromHtml = $('a.potentialUser');
     searchResultsFromHtml.remove();
+    
     $.each(searchResults, function(index, value) {
     $('ul.header').append(value)
+    
+  
     });
   });
 })
