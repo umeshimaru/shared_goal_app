@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.find_others(params[:key])
+    @users = User.find_others(params[:key],current_user)
     respond_to do |format|
       format.json { render json: @users }
       format.html { render :index}
