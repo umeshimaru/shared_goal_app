@@ -25,8 +25,8 @@ class User < ApplicationRecord
          validates :name , presence:true,  uniqueness: true
 
 
- scope :find_others, -> (user_input){ where("name LIKE ?", "#{user_input}%") }
-         
+ scope :find_others, -> (user_input,user){ where("name LIKE ? AND NOT id  = ?" ,"#{user_input}%", user.id) } 
+        
 
 def collect_user_events(user_weekly_goals)
   events = []
