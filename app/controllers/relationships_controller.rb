@@ -9,12 +9,12 @@ class RelationshipsController < ApplicationController
 
   def create
     #ここbuildメソッドに書きなおす。理由もし同時に
-  
-   friendship = Relationship.new(relationship_params)
-   if friendship.save
-    redirect_to  my_goal_monthly_goal_path(current_user)
+   relationship = Relationship.new(relationship_params)
+   if relationship.save
+      redirect_to  my_goal_monthly_goal_path(current_user)
+      current_user.create_notification_follow!(current_user,params[:relationship][:reciever_id])
+
    else
-    
     
    end
   end
