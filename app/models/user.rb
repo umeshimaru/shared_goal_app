@@ -39,6 +39,18 @@ def collect_user_events(user_weekly_goals)
   events
 end 
 
+def  create_notification_follow!(current_user,friend_id)
+  notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, friend_id, 'follow'])
+  if notification.blank?
+    notification = current_user.active_notifications.new(
+      visited_id: friend_id,
+      action: 'follow'
+    )
+    notification.save if notification.valid?
+    
+  end
+end
+
 
 
 
