@@ -52,7 +52,21 @@ def  create_notification_follow!(current_user,friend_id)
 end
 
 
+def can_follow?(other_user,user)
+  user = Relationship.where("(sender_id = ? OR reciever_id  = ?) OR (sender_id = ? OR reciever_id = ?)", user.id, user.id, other_user, other_user)
+   user.empty? ? true : false 
+end
 
+def follow(relationship_params,user)
+  relationship = Relationship.new(relationship_params)
+  if relationship.save
+     redirect_to  my_goal_monthly_goal_path(user), notice: "友達申請を送信しました"
+     current_user.create_notification_follow!(user,params[:relationship][:reciever_id])
+  else
+   flash.now[:alert] = "友達申請の送信に失敗しました。"
+    render template: "monthly_goals/my_goal"
+  end
+end 
 
 def self.ransackable_attributes(auth_object = nil)
   %w[name ]

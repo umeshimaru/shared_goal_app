@@ -7,16 +7,10 @@ class RelationshipsController < ApplicationController
     #ここではいかいいえの表示を調整する。senderかrecieverだったらはいを非表示falseだったら表示
   end
 
+   #can_follow?メソッドの引数の可読性を上げるために@other_usersを作成しました。
   def create
-    #ここbuildメソッドに書きなおす。理由もし同時に
-   relationship = Relationship.new(relationship_params)
-   if relationship.save
-      redirect_to  my_goal_monthly_goal_path(current_user)
-      current_user.create_notification_follow!(current_user,params[:relationship][:reciever_id])
-
-   else
-    
-   end
+    @other_user =  params[:relationship][:reciever_id]
+    current_user.can_follow?(@other_user,current_user) ?  (current_user.follow(relationship_params,current_user)) : (redirect_to  my_goal_monthly_goal_path(current_user) )
   end
 
   def destroy   
