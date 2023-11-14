@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   end
 
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
+   get '/notifications/index',        to: 'notifications#index'
 
  
 
