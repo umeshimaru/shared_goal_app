@@ -10,9 +10,14 @@ class RelationshipsController < ApplicationController
    #can_follow?メソッドの引数の可読性を上げるために@other_usersを作成しました。
   def create
     @other_user =  params[:relationship][:reciever_id]
-    current_user.can_follow?(@other_user,current_user) ?  (current_user.follow(@other_user,relationship_params,current_user)) : (redirect_to  my_goal_monthly_goal_path(current_user) )
-    
-  end
+   if current_user.can_follow?(@other_user,current_user)
+    current_user.follow(@other_user,relationship_params,current_user) 
+    redirect_to  my_goal_monthly_goal_path(current_user), flash: { success: "友達申請を送信しました"}
+   else
+    redirect_to  my_goal_monthly_goal_path(current_user),flash: { danger: "友達申請送信失敗しました"  }
+   end
+  end 
+
 
   def destroy   
   end

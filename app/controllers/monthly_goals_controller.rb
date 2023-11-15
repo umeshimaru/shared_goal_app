@@ -9,7 +9,6 @@ class MonthlyGoalsController < ApplicationController
   end
   # GET /monthly_goals or /monthly_goals.json
   def my_goal
-
     @currrent_user = current_user
     @monthly_goal = @current_user.monthly_goal
     @days_until_achievement = @monthly_goal.calc_days(@monthly_goal.goal_achieved_at)
