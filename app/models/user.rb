@@ -60,10 +60,10 @@ end
 def follow(relationship_params,user)
   relationship = Relationship.new(relationship_params)
   if relationship.save
-     redirect_to  my_goal_monthly_goal_path(user), notice: "友達申請を送信しました"
-     current_user.create_notification_follow!(user,params[:relationship][:reciever_id])
+    # redirect_to  my_goal_monthly_goal_path(user), notice: "友達申請を送信しました"
+     user.create_notification_follow!(user,params[:relationship][:reciever_id])
   else
-   flash.now[:alert] = "友達申請の送信に失敗しました。"
+    # flash.now[:alert] = "友達申請の送信に失敗しました。"
     render template: "monthly_goals/my_goal"
   end
 end 

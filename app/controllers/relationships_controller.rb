@@ -11,6 +11,7 @@ class RelationshipsController < ApplicationController
   def create
     @other_user =  params[:relationship][:reciever_id]
     current_user.can_follow?(@other_user,current_user) ?  (current_user.follow(relationship_params,current_user)) : (redirect_to  my_goal_monthly_goal_path(current_user) )
+    
   end
 
   def destroy   
