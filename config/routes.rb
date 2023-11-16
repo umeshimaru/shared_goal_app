@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get '/sign_up',            to: 'users/sessions#new'  
       get '/sign_up_account',    to: 'users/registrations#new'  
       post 'register',           to: 'users/registrations#create'  
+  
     end
   
   resources :users do
