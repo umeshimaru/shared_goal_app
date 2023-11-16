@@ -28,20 +28,16 @@ class WeeklyGoalsController < ApplicationController
     @weekly_goal = WeeklyGoal.new(weekly_goal_params)
     respond_to do |format|
       if @weekly_goal.save
-        format.html { redirect_to my_goal_monthly_goal_path(@user) , notice: "Weekly goal was successfully created." }
+        format.html { redirect_to my_goal_monthly_goal_path(@user) ,flash: { success: "週間目標が登録されました"}}
         format.js {   redirect_to my_goal_monthly_goal_path(@user) , status: :created }
       else
-        # format.html { redirect_to  my_goal_monthly_goal_path(@user) , status: :unprocessable_entity }
         format.js { render :errors, status: :unprocessable_entity }
       end
-      # byebug
     end
   
 
   end
 
-  # params[:id],params[:weekly_goal][:previous_weekly_goal],params[:weekly_goal][:start_time]
-  # PATCH/PUT /weekly_goals/1 or /weekly_goals/1.json
   def update
     @update_weekly_goal = WeeklyGoal.find_update_record(previous_weekly_goal,start_time,id)
     
