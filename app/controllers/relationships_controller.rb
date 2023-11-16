@@ -12,9 +12,9 @@ class RelationshipsController < ApplicationController
     @other_user =  params[:relationship][:reciever_id]
    if current_user.can_follow?(@other_user,current_user)
     current_user.follow(@other_user,relationship_params,current_user) 
-    redirect_to  my_goal_monthly_goal_path(current_user), flash: { success: "友達申請を送信しました"}
+    redirect_to  my_goal_monthly_goal_path(current_user), notice: "友達申請を送信しました"
    else
-    redirect_to  my_goal_monthly_goal_path(current_user),flash: { danger: "友達申請送信失敗しました"  }
+    redirect_to  my_goal_monthly_goal_path(current_user),flash: { alert: "友達申請送信失敗しました"  }
    end
   end 
 
