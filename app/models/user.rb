@@ -53,7 +53,6 @@ end
 
 
 def can_follow?(other_user,user)
-
   user = Relationship.where("(sender_id = ? OR reciever_id  = ?) OR (sender_id = ? OR reciever_id = ?)", user.id, user.id, other_user, other_user)
    user.empty? ? true : false 
 end
@@ -65,8 +64,13 @@ def follow(others,relationship_params,user)
   end
 end 
 
+def recieved_or_sent_friend_request?(user)
+  user = Relationship.where("(sender_id = ? OR reciever_id  = ? )",user.id, user.id)
+  user.empty? ? true : false 
+end 
+
 def self.ransackable_attributes(auth_object = nil)
-  %w[name ]
+  %w[name]
 end
 
 
