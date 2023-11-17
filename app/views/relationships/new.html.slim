@@ -1,12 +1,17 @@
-h1 目標共有申請依頼
+- if @user.recieved_or_sent_friend_request?(@user)
+  h1 目標共有申請依頼
+  h2 = "#{@friend_user.name} さんと目標を共有しますか？"
 
-
-
-h2 = "#{@friend_user.name} さんと目標を共有しますか？"
-
-= button_to "いいえ",  my_goal_monthly_goal_path(@user), method: :get
-= form_with model: @relationship, url:  create_relationships_path do |f|
-  = f.hidden_field :sender_id,   value:  current_user.id 
-  = f.hidden_field :reciever_id, value:  @friend_user.id 
-  = f.submit "はい"
+  = button_to "いいえ",  my_goal_monthly_goal_path(@user), method: :get
+  = form_with model: @relationship, url:  create_relationships_path do |f|
+    = f.hidden_field :sender_id,   value:  current_user.id 
+    = f.hidden_field :reciever_id, value:  @friend_user.id 
+    = f.submit "はい"
+- else 
+  h3 目標共有申請を送ることはできません
+  p 
+    | 下記に該当している可能性があります
+  ul
+    li 過去に１度目標共有申請依頼を他のユーザーに送っている
+    li 他のユーザーから目標共有申請をいただいている
 
