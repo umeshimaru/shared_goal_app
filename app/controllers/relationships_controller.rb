@@ -4,7 +4,6 @@ class RelationshipsController < ApplicationController
   def new
     @user = current_user
     @relationship = Relationship.new
-    #ここではいかいいえの表示を調整する。senderかrecieverだったらはいを非表示falseだったら表示
   end
 
    #can_follow?メソッドの引数の可読性を上げるために@other_usersを作成しました。

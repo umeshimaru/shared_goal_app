@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_q,only: %i[ search]
+  before_action :set_q,only: %i[search]
   def home
   end
 

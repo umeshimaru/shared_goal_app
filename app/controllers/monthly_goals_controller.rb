@@ -39,7 +39,7 @@ class MonthlyGoalsController < ApplicationController
     @monthly_goal = @current_user.build_monthly_goal(monthly_goal_params)
     respond_to do |format|
       if @monthly_goal.save
-        format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal),flash: { success: "月間目標が作成されました"} }
+        format.html { redirect_to my_goal_monthly_goal_url(@monthly_goal),flash: { notice: "月間目標が作成されました"} }
         format.json { render :show, status: :created, location: @monthly_goal }
       else
         format.html { render :new, status: :unprocessable_entity }
