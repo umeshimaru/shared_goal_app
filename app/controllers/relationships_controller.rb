@@ -22,10 +22,8 @@ class RelationshipsController < ApplicationController
   end
 
   def requests_status
-    @user = current_user
-   
-    
-    #ここに記載する記載する(senderかrecieverかのデータ取得)、そのデータから
+   @friend_request_reciever = current_user.reciever_relationships
+
   end
 
 
