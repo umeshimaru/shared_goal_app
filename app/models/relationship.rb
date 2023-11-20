@@ -5,8 +5,11 @@ class Relationship < ApplicationRecord
   validates :reciever_id, presence: true, uniqueness: true
 
 
-
-
+  def self.get_sender(friend_request_reciever)
+    if !friend_request_reciever.nil?
+        friend_request_reciever.sender
+    end 
+  end 
 
 end
 
