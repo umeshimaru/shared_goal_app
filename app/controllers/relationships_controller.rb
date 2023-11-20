@@ -22,8 +22,8 @@ class RelationshipsController < ApplicationController
   end
 
   def requests_status
-   @friend_request_reciever = current_user.reciever_relationships
-
+    @friend_request_reciever = current_user.reciever_relationships
+    @friend_request_sender =  Relationship.get_sender(@friend_request_reciever)
   end
 
 
