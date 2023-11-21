@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+
+
   has_one  :monthly_goal
   has_many :weekly_goals, through: :monthly_goal
   has_one  :sender_relationships,   class_name:  "Relationship",
