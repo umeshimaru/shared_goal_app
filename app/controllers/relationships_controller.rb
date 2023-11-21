@@ -26,6 +26,10 @@ class RelationshipsController < ApplicationController
     @friend_request_sender =  Relationship.get_sender(@friend_request_reciever)
   end
 
+  def accept_friend_request
+  a =   current_user.reciever_relationships
+  byebug
+  end
 
 
 

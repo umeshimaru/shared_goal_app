@@ -1,4 +1,5 @@
 class WeeklyGoal < ApplicationRecord
+
   belongs_to :user
   belongs_to :monthly_goal
   has_many :tasks, dependent: :destroy

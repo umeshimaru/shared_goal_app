@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2023_11_05_062422) do
   create_table "relationships", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "reciever_id"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sender_id", "reciever_id"], name: "index_relationships_on_sender_id_and_reciever_id", unique: true
