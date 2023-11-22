@@ -4,7 +4,7 @@
 
 - else
   h2 #{@friend_request_sender.name}さんから友達申請依頼が届いてます
-  = button_to "許可",my_goal_monthly_goal_path(current_user),{method: :get}
+  = button_to "許可",relationships_accept_friend_request_path,{method: :patch}
   = button_to "拒否",my_goal_monthly_goal_path(current_user),{method: :get}
 
 
