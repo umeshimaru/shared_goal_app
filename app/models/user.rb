@@ -75,6 +75,18 @@ def self.ransackable_attributes(auth_object = nil)
   %w[name]
 end
 
+def  create_notification_accept!(current_user,friend_id)
+  notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, friend_id, 'accept'])
+  if notification.blank?
+    notification = current_user.active_notifications.new(
+      visited_id: friend_id,
+      action: 'accept'
+    )
+    notification.save if notification.valid?
+    
+  end
+end
+
 
 
 end 
