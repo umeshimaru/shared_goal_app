@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
+
   patch 'relationships/accept_friend_request'
+
   get 'relationships/:id/new',             to:'relationships#new'
   get 'relationships/requests_status', to:'relationships#requests_status',as: :requests_status
   post 'relationships/:id/create',         to:'relationships#create',as: :create_relationships
