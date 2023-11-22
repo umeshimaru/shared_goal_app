@@ -41,12 +41,12 @@ def collect_user_events(user_weekly_goals)
   events
 end 
 
-def  create_notification_follow!(current_user,friend_id)
-  notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, friend_id, 'follow'])
+def  create_notification!(action,current_user,friend_id)
+  notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, friend_id, action])
   if notification.blank?
     notification = current_user.active_notifications.new(
       visited_id: friend_id,
-      action: 'follow'
+      action: action
     )
     notification.save if notification.valid?
     
@@ -62,7 +62,7 @@ end
 def follow(others,relationship_params,user)
   relationship = Relationship.new(relationship_params)
   if relationship.save
-    user.create_notification_follow!(user,others) 
+    user.create_notification!('follow',user,others) 
   end
 end 
 
@@ -75,17 +75,7 @@ def self.ransackable_attributes(auth_object = nil)
   %w[name]
 end
 
-def  create_notification_accept!(current_user,friend_id)
-  notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, friend_id, 'accept'])
-  if notification.blank?
-    notification = current_user.active_notifications.new(
-      visited_id: friend_id,
-      action: 'accept'
-    )
-    notification.save if notification.valid?
-    
-  end
-end
+
 
 
 
