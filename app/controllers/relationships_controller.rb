@@ -27,12 +27,13 @@ class RelationshipsController < ApplicationController
   end
 
   def accept_friend_request
-  reciever_user =  current_user.reciever_relationships
-  reciever_user.update_column(:checked, "true")
-  current_user.create_notification!('accept',current_user,reciever_user.sender_id)
+    reciever_user =  current_user.reciever_relationships
+    reciever_user.update_column(:checked, "true")
+    current_user.create_notification!('accept',current_user,reciever_user.sender_id)
   end
 
 
+  
 
   private 
 

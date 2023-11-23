@@ -31,6 +31,18 @@ class UsersController < ApplicationController
     end
 
 end 
+def friend_goal
+  relationship =  Relationship.where("(sender_id = ? OR reciever_id  = ? AND checked = ? )", current_user.id, current_user.id, true)
+  relationship.each do |a|
+    a 
+    b = a.reciever
+    byebug 
+  end
+  friend_user = relationship.reciever
+  byebug 
+  
+
+end
 
   private 
 
