@@ -1,7 +1,6 @@
 class NotificationsController < ApplicationController
   def index 
-    @notifications = current_user.passive_notifications.where.not(checked:true)
-    
-
-end
+    @notifications = current_user.passive_notifications.where.not(checked:true) 
+    byebug
+  end
 end 
