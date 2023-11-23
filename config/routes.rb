@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  
 
+  get '/users/friend_goal',          to: 'users#friend_goal'
   patch 'relationships/accept_friend_request'
+  get   'relationships/:id/new',              to:'relationships#new'
+  get   'relationships/requests_status',      to:'relationships#requests_status',as: :requests_status
+  post  'relationships/:id/create',           to:'relationships#create',as: :create_relationships
+  get   'relationships/destroy'
 
-  get 'relationships/:id/new',             to:'relationships#new'
-  get 'relationships/requests_status', to:'relationships#requests_status',as: :requests_status
-  post 'relationships/:id/create',         to:'relationships#create',as: :create_relationships
-  get  'relationships/destroy'
   resources :weekly_goals
   resources :tasks
   resources :monthly_goals do 
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users,  controllers: {
     registrations:  'users/registrations',
     confirmations:  'users/confirmations',
-    sessions:      'users/sessions',
+    sessions:       'users/sessions',
      }
   
      #↓は↑のusersディレクトリは配下のコントローラーにつなげるようにルーティングを作成するメソッド
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
    post '/monthly_goals/:id/my_goal', to: 'weekly_goals#create'
    get '/notifications/index',        to: 'notifications#index'
+
 
  
 
