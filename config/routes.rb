@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   get '/users/friend_goal',          to: 'users#friend_goal'
   patch 'relationships/accept_friend_request'
   get   'relationships/:id/new',              to:'relationships#new'
   get   'relationships/requests_status',      to:'relationships#requests_status',as: :requests_status
   post  'relationships/:id/create',           to:'relationships#create',as: :create_relationships
   get   'relationships/destroy'
+
   resources :weekly_goals
   resources :tasks
   resources :monthly_goals do 
