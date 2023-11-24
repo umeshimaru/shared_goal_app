@@ -1,0 +1,72 @@
+h1 =  "#{@friend_user.name}さんの目標"
+
+section.monthly_goal
+  h2  = "あなたの#{ @frind_monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
+  p.change_goal
+    =  @frind_monthly_goal.monthly_goal
+
+
+section 
+  h3 = "目標達成まであと#{@days_until_achievement.to_i}日"
+  p 
+    = "残#{@days_until_achievement.to_i}日"
+
+
+section 
+  h4 やることカレンダー
+ 
+  
+  
+  = month_calendar attribute: :start_time, end_attribute: :end_time,events: @events do |date, events|
+    = date.day
+    .dropdown
+       button.btn.btn-default.dropdown-toggle(type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" )
+        | +
+        span.caret 
+       ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+         li
+           a.weekly_goal[href="#" data-toggle="modal" data-target="#myModal" data-day=date] 週間目標
+         - if @weekly_goals.blank?
+
+         - else 
+          li
+            a.task[href="#" data-toggle="modal" data-target="#add_task" data-day=date] タスク
+         
+
+    - events.each do |event|
+      - if event.is_a?(WeeklyGoal)
+        div.container
+          p[class = "weekly_goal_link_#{event.id}"]
+            = link_to event.weekly_goal ,  '#',class: "weekly_goal_display_#{event.id}", data: { date: event.start_time.to_s, content: event.weekly_goal }
+          p 
+            = link_to "編集",    '#'  ,        class: "weekly_goal_edit_#{event.id}",data: { id: event.id }
+          p 
+            = link_to "削除",    '#'  ,        class: "weekly_goal_destroy_#{event.id}"
+      - else 
+        div
+          = link_to event.task,event
+        
+              
+section.penalty
+  h5 バディに差出すもの
+  p.change_penalty_name =  @frind_monthly_goal.penalty_name
+  p
+    = link_to '編集', '#', class: 'penalty_edit_button'
+    
+  = image_tag  @frind_monthly_goal.image.to_s
+  p
+    = link_to '編集', '#', class: 'penalty_image_edit'
+    
+#file-upload-form style="display: none;"
+  = form_with model: @monthly_goal , local: true, id: 'image_update' do |f|
+    = f.file_field :image
+    = f.submit '更新'
+= render partial: 'weekly_goals/add_weekly_goal'
+= render partial: 'tasks/task_modal'
+
+
+
+  
+
+= link_to "New Monthly goal", new_monthly_goal_path
+= link_to "ログアウト",  logout_path, method: :delete

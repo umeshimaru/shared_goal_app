@@ -33,13 +33,28 @@ class UsersController < ApplicationController
 end 
 def friend_goal
   relationship =  Relationship.where("(sender_id = ? OR reciever_id  = ? AND checked = ? )", current_user.id, current_user.id, true)
-  relationship.each do |a|
-    a 
-    b = a.reciever
-    byebug 
-  end
-  friend_user = relationship.reciever
-  byebug 
+  relationship.each do |relationship|
+    if relationship.sender_id == current_user.id
+     @friend_user = relationship.reciever
+     @frind_monthly_goal = @friend_user.monthly_goal
+     @days_until_achievement = @frind_monthly_goal.calc_days(@frind_monthly_goal.goal_achieved_at)
+     @weekly_goals = @friend_user.weekly_goals
+     @events = @friend_user.collect_user_events(@weekly_goals)
+     @task = Task.new
+    else
+     @friend_user = relationship.sender
+     @frind_monthly_goal = @friend_user.monthly_goal
+     @days_until_achievement = @frind_monthly_goal.calc_days(frind_monthly_goal.goal_achieved_at)
+     @weekly_goals = @friend_user.weekly_goals
+     @events = friend_user.collect_user_events(@weekly_goals)
+     @task = Task.new
+    end
+ 
+  end 
+
+
+  
+
   
 
 end
