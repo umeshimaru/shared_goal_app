@@ -4,7 +4,7 @@ header
       li= link_to 'マイページ',           '#'
       li= link_to 'ログアウト',           '#'
       li= link_to '目標共有申請状況',     requests_status_path
-      li= link_to 'フレンド目標',         relationships_accept_friend_request_path
+      li= link_to 'フレンド目標',            users_friend_goal_path
       
       -if yield :title == "マイゴール"
       = search_form_for @q , url: url_for(controller: 'users', action: 'search') do |f|

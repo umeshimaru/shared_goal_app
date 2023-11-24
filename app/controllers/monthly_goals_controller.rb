@@ -1,6 +1,6 @@
 class MonthlyGoalsController < ApplicationController
   before_action :set_monthly_goal, only: %i[ show edit update destroy ]
-  before_action :set_q,            only: %i[ my_goal new]
+  before_action :set_q,            only: %i[ my_goal new ]
  
  
 
