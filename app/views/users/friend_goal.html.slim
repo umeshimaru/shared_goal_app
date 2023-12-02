@@ -1,9 +1,9 @@
 h1 =  "#{@friend_user.name}さんの目標"
 
 section.monthly_goal
-  h2  = "あなたの#{ @frind_monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
+  h2  = "#{@friend_user.name}さんが#{ @friend_monthly_goal.goal_achieved_at.strftime('%Y年%m月%d日')}に達成する目標"
   p.change_goal
-    =  @frind_monthly_goal.monthly_goal
+    =  @friend_monthly_goal.monthly_goal
 
 
 section 
@@ -49,11 +49,11 @@ section
               
 section.penalty
   h5 バディに差出すもの
-  p.change_penalty_name =  @frind_monthly_goal.penalty_name
+  p.change_penalty_name =  @friend_monthly_goal.penalty_name
   p
     = link_to '編集', '#', class: 'penalty_edit_button'
     
-  = image_tag  @frind_monthly_goal.image.to_s
+  = image_tag  @friend_monthly_goal.image.to_s
   p
     = link_to '編集', '#', class: 'penalty_image_edit'
     
@@ -61,12 +61,12 @@ section.penalty
   = form_with model: @monthly_goal , local: true, id: 'image_update' do |f|
     = f.file_field :image
     = f.submit '更新'
-= render partial: 'weekly_goals/add_weekly_goal'
+= render partial: 'weekly_goals/add_weekly_goal', locals:  {monthly_goal: @friend_monthly_goal}
+
 = render partial: 'tasks/task_modal'
 
 
 
-  
 
 = link_to "New Monthly goal", new_monthly_goal_path
 = link_to "ログアウト",  logout_path, method: :delete

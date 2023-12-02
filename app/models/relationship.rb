@@ -12,5 +12,8 @@ class Relationship < ApplicationRecord
     end 
   end 
 
+
+  
+
 end
 

@@ -64,7 +64,8 @@ section.penalty
   = form_with model: @monthly_goal , local: true, id: 'image_update' do |f|
     = f.file_field :image
     = f.submit '更新'
-= render partial: 'weekly_goals/add_weekly_goal'
+= render partial: 'weekly_goals/add_weekly_goal', locals:  {monthly_goal: @monthly_goal}
+
 = render partial: 'tasks/task_modal'
 
 
