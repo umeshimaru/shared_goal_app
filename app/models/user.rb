@@ -30,6 +30,13 @@ class User < ApplicationRecord
  scope :find_others, -> (user_input,user){ where("name LIKE ? AND NOT id  = ?" ,"#{user_input}%", user.id) } 
         
 
+
+ def calc_days(goal_achieved_at)
+  today = Date.today 
+  @days_until_achievement =  goal_achieved_at - today 
+
+end
+
 def collect_user_events(user_weekly_goals)
   events = []
   user_weekly_goals.each do |weekly_goal|
